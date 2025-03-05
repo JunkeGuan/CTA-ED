@@ -81,9 +81,10 @@ The neural network approach is considerably more involved, and the figure below 
 
 
 ## Now with the Royals
-Data from the Court circular (Pagnini)
+This is text data from the Court circular (Pagnini). This original data has been collected by Marta Pagnini, who is a researcher at the London School of Economics. Each line is a paragraph in an issue of the Court Circular. The Court Circular is the official agenda of activities for the Royal family paper. It has been published every single day since the 19th century, giving  information on what the Royals are doing and who they are meeting with.
 ```{r, eval=F}
 court_circular <- read.csv2("data/wordembed/Court_Circular_1000_random_sample.csv", sep = ",")
+head(court_circular)
 ```
 
 
@@ -92,3 +93,138 @@ court_circular <- read.csv2("data/wordembed/Court_Circular_1000_random_sample.cs
 court_circular <- read.csv2(gzcon(url("https://github.com/marionlieutaud/CTA-ED/blob/main/data/wordembed/Court_Circular_1000_random_sample.csv?raw=true")), sep=",")
 ```
 
+## Word vectors via SVD
+
+We're going to set about generating a set of word vectors with from our court circular text data. Note that many word embedding applications will use pre-trained embeddings from a much larger corpus, or will generate local embeddings using neural net-based approaches. 
+
+Here, we're instead going to generate a set of embeddings or word vectors by making a series of calculations based on the frequencies with which words appear in different contexts. We will then use a technique called the "Singular Value Decomposition" (SVD). This is a dimensionality reduction technique where the first axis of the resulting composition is designed to capture the most variance, the second the second-most etc...
+
+How do we achieve this?
+
+## Implementation
+
+The first thing we need to do is to get our data in the right format to calculate so-called "skip-gram probabilties." If you go through the code line by the line in the below you will begin to understand what these are. 
+
+What's going on?
+
+Well, we're first unnesting our tweet data as in previous exercises. But importantly, here, we're not unnesting to individual tokens but to ngrams of length 6 or, in other words, for postID n with words k indexed by i, we take words i~1~ ...i~6~, then we take words i~2~ ...i~7~. Try just running the first two lines of the code below to see what this means in practice. 
+
+After this, we make a unique ID for the particular ngram we create for each postID, and then we make a unique skipgramID for each postID and ngram. And then we unnest the words of each ngram associated with each skipgramID.
+
+You can see the resulting output below.
+
+```{r, eval = F}
+
+names(court_circular)
+
+#create context window with length 6
+court_skipgrams <- court_circular %>%
+    rename(textID = X) %>%
+    unnest_tokens(ngram, Paragraph, token = "ngrams", n = 6) %>%
+    mutate(ngramID = row_number()) %>% 
+    tidyr::unite(skipgramID, textID, ngramID) %>%
+    unnest_tokens(word, ngram)
+
+head(court_skipgrams, n=20)
+```
+What next?
+
+Well we can now calculate a set of probabilities from our skipgrams. We do so with the `pairwise_count()` function from the <tt>widyr</tt> package. Essentially, this function is saying: for each skipgramID count the number of times a word appears with another word for that feature (where the feature is the skipgramID). We set `diag` to `TRUE` when we also want to count the number of times a word appears near itself. 
+
+The probability we are then calculating is the number of times a word appears with another word denominated by the total number of word pairings across the whole corpus. 
+
+```{r}
+#calculate probabilities
+skipgram_probs <- court_skipgrams %>%
+    pairwise_count(word, skipgramID, diag = TRUE, sort = TRUE) %>% # diag = T means that we also count when the word appears twice within the window
+    mutate(p = n / sum(n))
+
+head(skipgram_probs[1000:1020,], n=20)
+```
+```{r, echo=F}
+#calculate probabilities
+skipgram_probs <- court_skipgrams %>%
+    pairwise_count(word, skipgramID, diag = TRUE, sort = TRUE) %>%
+    mutate(p = n / sum(n))
+
+head(skipgram_probs[1000:1020,], n=20)
+```
+
+
+So we see, for example, that the words "duke" and "patron" appear 229 times together. Denominating that by the total n of word pairings (or `sum(skipgram_probs$n)`), gives us our probability p. 
+
+Currently our word embeddings include a lot of stopwords - we could consider removing them.
+
+Okay, now we have our skipgram probabilities we need to get our "unigram probabilities" in order to normalize the skipgram probabilities before applying the singular value decomposition. 
+
+What is a "unigram probability"? Well, this is just a technical way of saying: count up all the appearances of a given word in our corpus then divide that by the total number of words in our corpus. And we can do this as such:
+
+```{r, warning=FALSE}
+#calculate unigram probabilities (used to normalize skipgram probabilities later)
+unigram_probs <- court_circular %>%
+    unnest_tokens(word, Paragraph) %>%
+    count(word, sort = TRUE) %>%
+    mutate(p = n / sum(n))
+```
+
+
+Finally, it's time to normalize our skipgram probabilities. 
+
+We take our skipgram probabilities, we filter out word pairings that appear twenty times or less. We rename our words "item1" and "item2," we merge in the unigram probabilities for both words. 
+
+And then we calculate the joint probability as the skipgram probability divided by the unigram probability for the first word in the pairing divided by the unigram probability for the second word in the pairing. This is equivalent to: P(x,y)/P(x)P(y). 
+
+In essence, the interpretation of this value is: *"do events (words) x and y occur together more often than we would expect if they were independent"*?
+
+Once we've recovered these normalized probabilities, we can have a look at the joint probabilities for a given item, i.e., word. 
+
+Here, we look at the word "charity" and "duke" and look at those words with the highest value for "p_together."
+
+Higher values greater than 1 indicate that the words are more likely to appear close to each other; low values less than 1 indicate that they are unlikely to appear close to each other. This, in other words, gives an indication of the association of two words.
+
+```{r, warning=F}
+#normalize skipgram probabilities
+normalized_prob <- skipgram_probs %>%
+    filter(n > 20) %>% #filter out skipgrams with n <=20
+    rename(word1 = item1, word2 = item2) %>%
+    left_join(unigram_probs %>%
+                  select(word1 = word, p1 = p),
+              by = "word1") %>%
+    left_join(unigram_probs %>%
+                  select(word2 = word, p2 = p),
+              by = "word2") %>%
+    mutate(p_together = p / p1 / p2)
+
+normalized_prob %>% 
+    filter(word1 == "charity") %>%
+    arrange(-p_together)
+
+normalized_prob %>% 
+    filter(word1 == "duke") %>%
+    arrange(-p_together)
+```
+
+
+Using this normalized probabilities, we then calculate the PMI or "Pointwise Mutual Information" value, which is simply the log of the joint probability we calculated above. 
+
+**Definition time**: "PMI is logarithm of the probability of finding two words together, normalized for the probability of finding each of the words alone."
+
+We then cast our word pairs into a sparse matrix where values correspond to the PMI between two corresponding words. 
+
+```{r, eval=F}
+pmi_matrix <- normalized_prob %>%
+    mutate(pmi = log10(p_together)) %>%
+    cast_sparse(word1, word2, pmi)
+
+#remove missing data
+pmi_matrix@x[is.na(pmi_matrix@x)] <- 0
+#run SVD
+
+# There is a problem with the package 'irlba' and the updated version of 'Matrix'
+pmi_svd <- irlba::irlba(pmi_matrix, 256, maxit = 500)
+
+# downgrading the Matrix version of the package might help
+remotes::install_version("Matrix", version = "1.6-1.1")
+
+glimpse(pmi_matrix)
+```
