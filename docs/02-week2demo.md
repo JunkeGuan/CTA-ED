@@ -29,7 +29,7 @@ head(lipsum_text$text)
 ```
 
 ```
-## [1] "Lorem ipsum dolor sit amet, fermentum, egestas lorem, tempus, pharetra duis ipsum eu tempor dignissim. Sed quis tempus dapibus duis et. Sodales est ligula sit curabitur vitae in nec phasellus magnis, suscipit bibendum, pharetra. Aliquam est lobortis netus est sem est maecenas et efficitur nostra aliquet diam. Ex ut amet cras imperdiet risus volutpat hac. Lacinia lectus odio urna dolor inceptos nulla ut. Porttitor amet sed neque. In eu eget ut porttitor, nulla, nec posuere. Nec consequat velit sit nulla id ante. Vestibulum nec nunc et arcu ut suspendisse ac. Parturient sed volutpat in in nec neque, nisl montes sociosqu urna ligula nunc ut. Lacinia viverra eu sed quis tempus pharetra leo arcu ac, eu venenatis non amet ultrices. Id turpis duis sociosqu faucibus sed aptent eleifend suspendisse ac."
+## [1] "Lorem ipsum dolor sit amet, justo nisl, vel torquent, et et tincidunt, aliquam. Et vel inceptos nec amet pulvinar. Dui tellus ut mattis nulla. Nostra maximus libero vitae ullamcorper nam in. Hac amet dolor praesent a nunc mi nec non ac, enim. Aenean rutrum. Varius purus felis ut rhoncus. Pellentesque, ipsum in feugiat nec enim massa suspendisse ad id justo eu euismod eu dis. Dignissim dignissim, turpis eu ex, ac at nunc mi fusce sit. Mus eleifend mauris posuere varius porta a elementum donec lacus amet. Maecenas lacus viverra malesuada, ante in."
 ```
 
 We can then tokenize with the `unnest_tokens()` function in `tidytext`. 
@@ -43,13 +43,13 @@ head(tokens)
 ```
 
 ```
-##        word
-## 1     lorem
-## 2     ipsum
-## 3     dolor
-## 4       sit
-## 5      amet
-## 6 fermentum
+##    word
+## 1 lorem
+## 2 ipsum
+## 3 dolor
+## 4   sit
+## 5  amet
+## 6 justo
 ```
 
 Now we'll get some larger data, simulating 5000 observations (rows) of random Latin text strings. 
@@ -158,23 +158,23 @@ lipsum_text %>%
 <tbody>
   <tr>
    <td style="text-align:left;"> lipsum </td>
-   <td style="text-align:right;"> 73520 </td>
+   <td style="text-align:right;"> 72458 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> more </td>
-   <td style="text-align:right;"> 73520 </td>
+   <td style="text-align:right;"> 72458 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> words </td>
-   <td style="text-align:right;"> 68772 </td>
+   <td style="text-align:right;"> 67700 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> sed </td>
-   <td style="text-align:right;"> 17616 </td>
+   <td style="text-align:right;"> 17931 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> in </td>
-   <td style="text-align:right;"> 12203 </td>
+   <td style="text-align:right;"> 12480 </td>
   </tr>
 </tbody>
 </table>

@@ -33,14 +33,14 @@ head(happyn)
 ```
 ## # A tibble: 6 × 4
 ## # Groups:   week, student [1]
-##    week student word      happy
-##   <int>   <int> <chr>     <int>
-## 1     1      12 lorem         0
-## 2     1      12 ipsum         0
-## 3     1      12 dolor         0
-## 4     1      12 sit           0
-## 5     1      12 amet          0
-## 6     1      12 convallis     0
+##    week student word  happy
+##   <int>   <int> <chr> <int>
+## 1     1      19 lorem     0
+## 2     1      19 ipsum     0
+## 3     1      19 dolor     0
+## 4     1      19 sit       0
+## 5     1      19 amet      0
+## 6     1      19 eros      0
 ```
 
 ``` r
@@ -50,14 +50,14 @@ head(happyu)
 ```
 ## # A tibble: 6 × 4
 ## # Groups:   week, student [1]
-##    week student word      happy
-##   <int>   <int> <chr>     <int>
-## 1     1      12 lorem         0
-## 2     1      12 ipsum         0
-## 3     1      12 dolor         0
-## 4     1      12 sit           0
-## 5     1      12 amet          0
-## 6     1      12 convallis     0
+##    week student word  happy
+##   <int>   <int> <chr> <int>
+## 1     1      19 lorem     0
+## 2     1      19 ipsum     0
+## 3     1      19 dolor     0
+## 4     1      19 sit       0
+## 5     1      19 amet      0
+## 6     1      19 eros      0
 ```
 
 ``` r
@@ -67,14 +67,14 @@ head(happyd)
 ```
 ## # A tibble: 6 × 4
 ## # Groups:   week, student [1]
-##    week student word      happy
-##   <int>   <int> <chr>     <int>
-## 1     1      12 lorem         0
-## 2     1      12 ipsum         0
-## 3     1      12 dolor         0
-## 4     1      12 sit           0
-## 5     1      12 amet          0
-## 6     1      12 convallis     0
+##    week student word  happy
+##   <int>   <int> <chr> <int>
+## 1     1      19 lorem     0
+## 2     1      19 ipsum     0
+## 3     1      19 dolor     0
+## 4     1      19 sit       0
+## 5     1      19 amet      0
+## 6     1      19 eros      0
 ```
 
 We can then see the trend in "happy" words over by week and student.
@@ -168,12 +168,12 @@ head(happylipsumn)
 ## # Groups:   week, student [1]
 ##    week student word  happy
 ##   <int>   <int> <chr> <int>
-## 1     1      12 lorem     0
-## 2     1      12 ipsum     0
-## 3     1      12 dolor     0
-## 4     1      12 sit       0
-## 5     1      12 amet      0
-## 6     1      12 nec       0
+## 1     1      19 lorem     0
+## 2     1      19 ipsum     0
+## 3     1      19 dolor     0
+## 4     1      19 sit       0
+## 5     1      19 amet      0
+## 6     1      19 a         0
 ```
 
 ``` r
@@ -183,14 +183,14 @@ head(happylipsumu)
 ```
 ## # A tibble: 6 × 4
 ## # Groups:   week, student [1]
-##    week student word  happy
-##   <int>   <int> <chr> <int>
-## 1     1      12 lorem     0
-## 2     1      12 ipsum     0
-## 3     1      12 dolor     0
-## 4     1      12 sit       0
-## 5     1      12 amet      0
-## 6     1      12 sed       0
+##    week student word        happy
+##   <int>   <int> <chr>       <int>
+## 1     1      19 lorem           0
+## 2     1      19 ipsum           0
+## 3     1      19 dolor           0
+## 4     1      19 sit             0
+## 5     1      19 amet            0
+## 6     1      19 ullamcorper     0
 ```
 
 ``` r
@@ -200,14 +200,14 @@ head(happylipsumd)
 ```
 ## # A tibble: 6 × 4
 ## # Groups:   week, student [1]
-##    week student word  happy
-##   <int>   <int> <chr> <int>
-## 1     1      12 lorem     0
-## 2     1      12 ipsum     0
-## 3     1      12 dolor     0
-## 4     1      12 sit       0
-## 5     1      12 amet      0
-## 6     1      12 orci      0
+##    week student word   happy
+##   <int>   <int> <chr>  <int>
+## 1     1      19 lorem      0
+## 2     1      19 ipsum      0
+## 3     1      19 dolor      0
+## 4     1      19 sit        0
+## 5     1      19 amet       0
+## 6     1      19 aenean     0
 ```
 
 Then if we plot the number of happy words *divided* by the number of total words each week for each student in each of these datasets, we get the below. 
@@ -248,16 +248,16 @@ happylipsumn %>%
 ## # Groups:   week, student [300]
 ##     week student sum_hap index_total prop_hap
 ##    <int>   <int>   <int>       <int>    <dbl>
-##  1     1       1     796        3986    0.200
-##  2     1       2     959        4679    0.205
-##  3     1       3     722        2829    0.255
-##  4     1       4     914        4127    0.221
-##  5     1       5     644        2908    0.221
-##  6     1       6     634        3664    0.173
-##  7     1       7     966        5679    0.170
-##  8     1       8     643        2723    0.236
-##  9     1       9    1044        4868    0.214
-## 10     1      10    1059        5363    0.197
+##  1     1       1     589        2840    0.207
+##  2     1       2    1342        5888    0.228
+##  3     1       3     791        3768    0.210
+##  4     1       4     841        3861    0.218
+##  5     1       5    1174        5169    0.227
+##  6     1       6     555        2602    0.213
+##  7     1       7     566        2989    0.189
+##  8     1       8    1171        5168    0.227
+##  9     1       9     814        3569    0.228
+## 10     1      10     759        4143    0.183
 ## # ℹ 290 more rows
 ```
 

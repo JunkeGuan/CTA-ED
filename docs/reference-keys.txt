@@ -35,6 +35,9 @@ using-quanteda
 week-6-unsupervised-learning-topic-models
 week-6-demo
 setup-4
+regex-exercise
+regex-exercise-1
+topic-model-demo
 week-7-unsupervised-learning-word-embedding
 week-7-demo
 setup-5
