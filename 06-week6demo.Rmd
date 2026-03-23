@@ -2,7 +2,7 @@
 title: "Week6_demo"
 author: "Junke Guan"
 date: "2026-03-23"
-output:html_document
+output: html_document
 ---
 ## Setup
 
