@@ -1,0 +1,2241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>1 Setup | Week6_demo</title>
+
+    <meta name="author" content="Junke Guan" />
+  
+   
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="1 Setup | Week6_demo" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Setup | Week6_demo" />
+  
+  
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.9.0/transition.js"></script>
+    <script src="libs/bs3compat-0.9.0/tabs.js"></script>
+    <script src="libs/bs3compat-0.9.0/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+    
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Week6_demo</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="setup" class="section level2" number="1">
+<h2><span class="header-section-number">1</span> Setup</h2>
+<p>First, we’ll load the packages we’ll be using in this week’s brief demo.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co"># there are sometimes problem with installing topicmodels on Mac OS X. You can find help on Ken benoit&#39;s page here: https://kenbenoit.net/how-to-install-the-r-package-topicmodels-on-os-x/. For me, this required installing gsl and modeltools.</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+</div>
+<div id="regex-exercise" class="section level2" number="2">
+<h2><span class="header-section-number">2</span> Regex exercise</h2>
+<p>We’ll start with a quick regex exercise to practice extracting information from text. For this exercise, we will use the text of the recent emails sent to academic staff by Peter Mathieson</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>email1 <span class="ot">&lt;-</span> <span class="st">&quot;Dear colleague,</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="st">Work is continuing across our five change workstreams to identify savings in our operational spending. This includes costs that are related to both staff and non-staff (“other operating expenditure”).</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="st">Staff costs are by far the largest component of our expenditure. Our Staff workstream is addressing this through projects to identify the right size and shape for our academic and professional staff body to deliver our future teaching and research model.</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="st">Read the latest on Staff workstream projects</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="st">It has always been our approach to take actions that will seek to avoid compulsory redundancies. This commitment is unwavering.</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="st">We also continue to honour all terms of our agreement with the University and College Union Edinburgh (UCUE) made in December 2025. This agreement demonstrated what can be achieved with constructive engagement, and we will seek to continue working with our joint trade unions as we take the necessary steps to secure a sustainable future for our University.</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="st">Read more about the agreement with UCUE</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="st">We are taking action in line with this commitment to help us reduce our costs whilst protecting jobs wherever possible. This includes new measures outlined below.</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="st">Academic promotions and professional services job regrading</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="st">Academic promotions and regrading of professional services roles remain paused until we reach a more stable financial position. This means that there will be no promotions or regrading processes in 2026/27.</span></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="st">We recognise the concerns about this pause: the decision to extend it for another year has not been taken lightly. We all wish to be able to get back to a situation in which we can return to these processes, but it is responsible leadership to balance this desire with consideration of affordability.</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="st">We will review this policy again in 2027, by which time we hope to be able to reinstate the promotions and regrading processes if we are confident that we are in a financial position to accommodate the increased costs associated with these schemes. In the meantime, we are using this intervening period to make improvements to the promotions and regrading schemes, including simplifying our processes and using automation where possible.</span></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="st">The Equality Impact Assessment (EqIA) associated with this decision has been updated and is available to read on our website. We are mindful of the impact of continuing this pause, especially on making further progress towards ensuring diversity within higher grades. We will continue to monitor this and any arising impacts of this decision.  </span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a><span class="st">Read the EqIA</span></span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="st">Contribution rewards</span></span>
+<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a><span class="st">Our contribution recognition process was cancelled last year. Work to review and improve future recognition offerings will continue, with plans to replace this process with a scheme which remains fair, rewarding and fit for the future. We will provide further updates on how this work is progressing in the next academic year.</span></span>
+<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" tabindex="-1"></a><span class="st">Additional recruitment restraint for higher grade roles</span></span>
+<span id="cb2-33"><a href="#cb2-33" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" tabindex="-1"></a><span class="st">We are continuing to limit recruitment of new and replacement staff posts to only those roles considered critical to the University’s mission. We will now further limit recruitment of staff in grades UE08-10 and equivalent, where we have seen the largest increase in permanent roles over the last few years.</span></span>
+<span id="cb2-35"><a href="#cb2-35" tabindex="-1"></a><span class="st">Processes to consider roles within these grades are currently being developed and will likely require approval both within budget areas and by other senior leaders.</span></span>
+<span id="cb2-36"><a href="#cb2-36" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" tabindex="-1"></a><span class="st">Changes to recruitment processes</span></span>
+<span id="cb2-38"><a href="#cb2-38" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" tabindex="-1"></a><span class="st">Where recruitment for new or replacement posts has been approved, these roles must now be advertised internally for two weeks prior to external advertising, with only minor agreed exceptions. This commitment supports our aim to maximise internal career opportunities, while continuing to recruit high-quality staff aligned to prioritised organisational needs.   </span></span>
+<span id="cb2-40"><a href="#cb2-40" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" tabindex="-1"></a><span class="st">More information on this change is available in our updated recruitment guidance.</span></span>
+<span id="cb2-42"><a href="#cb2-42" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" tabindex="-1"></a><span class="st">View the updated recruitment guidance</span></span>
+<span id="cb2-44"><a href="#cb2-44" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" tabindex="-1"></a><span class="st">Voluntary Severance Scheme for academic staff</span></span>
+<span id="cb2-46"><a href="#cb2-46" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" tabindex="-1"></a><span class="st">We are currently offering a Voluntary Severance Scheme which is open to applications from academic staff. Details of this scheme are available on the SharePoint site linked below. This includes answers to common questions and an estimate calculator so you can see what voluntary severance would mean for you financially.</span></span>
+<span id="cb2-48"><a href="#cb2-48" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" tabindex="-1"></a><span class="st">Voluntary Severance Scheme 2026 SharePoint</span></span>
+<span id="cb2-50"><a href="#cb2-50" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" tabindex="-1"></a><span class="st">Thank you to everyone who is working hard to identify savings that will help us meet our cost-savings targets. The senior team and I understand how difficult this period is for everyone within our community. However, through these changes we aim to become a more efficient and resilient institution, focused on our core mission of delivering exceptional teaching and research.</span></span>
+<span id="cb2-52"><a href="#cb2-52" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" tabindex="-1"></a><span class="st">I recognise that there is still uncertainty about some aspects of the measures we are taking to reshape our University, and we will continue to update you on this work as it develops. Please continue to visit the University Finances SharePoint for the latest information and FAQs:</span></span>
+<span id="cb2-54"><a href="#cb2-54" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" tabindex="-1"></a><span class="st">University Finances SharePoint</span></span>
+<span id="cb2-56"><a href="#cb2-56" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" tabindex="-1"></a><span class="st">Best wishes,</span></span>
+<span id="cb2-58"><a href="#cb2-58" tabindex="-1"></a><span class="st">Peter&quot;</span></span>
+<span id="cb2-59"><a href="#cb2-59" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" tabindex="-1"></a>email2 <span class="ot">&lt;-</span> <span class="st">&quot;Dear colleague,</span></span>
+<span id="cb2-61"><a href="#cb2-61" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" tabindex="-1"></a><span class="st">Happy New Year and welcome to the new semester. I hope you enjoyed the festivities and found time to rest over the winter break. As always, my sincere thanks go to those who continued to deliver our essential services over the festive period.</span></span>
+<span id="cb2-63"><a href="#cb2-63" tabindex="-1"></a><span class="st">      </span></span>
+<span id="cb2-64"><a href="#cb2-64" tabindex="-1"></a><span class="st">Financial sustainability</span></span>
+<span id="cb2-65"><a href="#cb2-65" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" tabindex="-1"></a><span class="st">There is no doubt that 2025 was a busy and challenging year. The ongoing financial challenges facing the University and the entire Higher Education sector are very serious, and I’m acutely aware that this year will bring further uncertainty for many of you while we continue to develop plans to reshape the University and build greater financial sustainability. Our aim is to give people clarity as quickly and fairly as we can.</span></span>
+<span id="cb2-67"><a href="#cb2-67" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" tabindex="-1"></a><span class="st">Our latest annual report and accounts will be published this month, once again demonstrating that our expenditure growth continues to outpace our income growth. We have always been clear that we must take action immediately to address these challenges and indeed the 2024/25 accounts report a modest surplus because of the actions that we took in that financial year. Without those actions, the institution would now already be running at a deficit each month, confirming that delaying difficult decisions would only lead to far greater problems in the future.</span></span>
+<span id="cb2-69"><a href="#cb2-69" tabindex="-1"></a></span>
+<span id="cb2-70"><a href="#cb2-70" tabindex="-1"></a><span class="st">Work will continue this year to identify savings in our operational spending through our five change workstreams. The agreement with the University and College Union in December provides clear parameters for the work of our staff workstream moving forward. Our commitment to staff remains that we will continue to take actions with the aim of preventing the need for compulsory redundancies. Where any redundancies are required, we will always provide voluntary options before considering the need for compulsory action. We are also working to ensure that comments and feedback from last year’s staff survey are addressed through our change programme.</span></span>
+<span id="cb2-71"><a href="#cb2-71" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" tabindex="-1"></a><span class="st">Read more on the union agreement</span></span>
+<span id="cb2-73"><a href="#cb2-73" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" tabindex="-1"></a><span class="st">As well as needing to reduce staff costs, we need to reduce non-staff costs, for example in the ways we procure supplies and services. Colleagues in Procurement have identified substantial recurrent savings by careful alignment of our needs and detailed negotiations with suppliers, all without reducing the quality of goods or services.</span></span>
+<span id="cb2-75"><a href="#cb2-75" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" tabindex="-1"></a><span class="st">I want to emphasise that change is not optional: it is absolutely required right across the University and all its activities. For example, in our efforts to reduce non-staff costs (and thereby protect as many jobs as possible) there will be examples where someone might prefer a particular product, online platform or manufacturer’s equipment and have to accept that their preference can no longer be afforded.</span></span>
+<span id="cb2-77"><a href="#cb2-77" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" tabindex="-1"></a><span class="st">Reducing our costs and improving our ways of working will require collective effort from all of us, and we need to work together to successfully deliver the changes needed. This process will be difficult; however, I am confident that through actions already taken and the projects underway to explore how we will work in future, we are well placed to respond to the challenge of restoring financial sustainability and resilience.</span></span>
+<span id="cb2-79"><a href="#cb2-79" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" tabindex="-1"></a><span class="st">We will continue to keep you updated about the changes being made across the University by email and by updates on our dedicated SharePoint sites. There will also be continued opportunities this year for you to feed into these changes directly and to speak to leaders across the University about how they will impact you.</span></span>
+<span id="cb2-81"><a href="#cb2-81" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" tabindex="-1"></a><span class="st">Find information and updates from our workstreams</span></span>
+<span id="cb2-83"><a href="#cb2-83" tabindex="-1"></a><span class="st">Visit our University Finances SharePoint</span></span>
+<span id="cb2-84"><a href="#cb2-84" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" tabindex="-1"></a><span class="st">Our continued impact</span></span>
+<span id="cb2-86"><a href="#cb2-86" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" tabindex="-1"></a><span class="st">Despite the ongoing uncertainty, there is so much that we can be proud of and there are many reasons to remain optimistic as we move into 2026. The University is a tremendous force for good and the changes we are making will help us to continue delivering local and global impact this year and long into the future. I’d like to highlight just a few examples.</span></span>
+<span id="cb2-88"><a href="#cb2-88" tabindex="-1"></a><span class="st">     </span></span>
+<span id="cb2-89"><a href="#cb2-89" tabindex="-1"></a><span class="st">The University has recently been ranked 4th in the world and 2nd in the UK in the 2026 QS World University Rankings for Sustainability. This feels particularly apt as we prepare to launch our new sustainability strategy in the spring, which sets out our plans to not only minimise damage to the environment, but actively repair it. Read more about our sustainability credentials</span></span>
+<span id="cb2-90"><a href="#cb2-90" tabindex="-1"></a><span class="st">2026 marks 300 years of medical education at the University - we believe ours to be the oldest medical school in the English-speaking world. The &#39;Edinburgh Medical School 300’ project will explore Edinburgh’s history in shaping modern medicine and set the stage for future innovations in medical education and healthcare. Get involved in Edinburgh Medical School 300</span></span>
+<span id="cb2-91"><a href="#cb2-91" tabindex="-1"></a><span class="st">Our research and innovation outputs continue to go from strength to strength. We were proud to win a Queen Elizabeth Prize for Higher Education last year in recognition of the Centre for Fire Safety Engineering’s education, training and internationally significant research which has for 50 years made built and natural environments safer around the world. Find out more about the award-winning project</span></span>
+<span id="cb2-92"><a href="#cb2-92" tabindex="-1"></a><span class="st">Our commercial activity continues to thrive, driven and supported by colleagues in Edinburgh Innovations. We secured £112.6m in research awards in 2024/25, attracted £113m investment into University-associated companies, generated 172 new patents, 62 new licenses and launched 64 companies. Read The Power of Innovation 2024/5</span></span>
+<span id="cb2-93"><a href="#cb2-93" tabindex="-1"></a><span class="st">Our new Community Plan was launched last semester, detailing how we will continue to work with our local communities on solutions to the challenges that matter to them. This includes extending our Community Access to Rooms Scheme which, since its launch in 2022, has saved more than 180 local organisations an estimated £55,000 in room hire costs. View our Community Plan</span></span>
+<span id="cb2-94"><a href="#cb2-94" tabindex="-1"></a><span class="st">     </span></span>
+<span id="cb2-95"><a href="#cb2-95" tabindex="-1"></a><span class="st">Improving staff and student experience</span></span>
+<span id="cb2-96"><a href="#cb2-96" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" tabindex="-1"></a><span class="st">Underpinning our work to reshape the University is our commitment to improving the experience of our students as well as our staff.</span></span>
+<span id="cb2-98"><a href="#cb2-98" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" tabindex="-1"></a><span class="st">I was delighted to see improvements to our performance in last year’s National Student Survey. Our Postgraduate surveys also continue to show positives and we have made good progress in the last year with regard to timeliness of assessment feedback. This is all credit to the hard work of teams across the University and we look forward to capitalising on this progress and making further improvements in 2026.</span></span>
+<span id="cb2-100"><a href="#cb2-100" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" tabindex="-1"></a><span class="st">This spring will also see the reopening of our iconic and much-loved Students’ Union building Teviot after extensive renovation works and improvements to accessibility.  </span></span>
+<span id="cb2-102"><a href="#cb2-102" tabindex="-1"></a><span class="st"> </span></span>
+<span id="cb2-103"><a href="#cb2-103" tabindex="-1"></a><span class="st">Teviot building works</span></span>
+<span id="cb2-104"><a href="#cb2-104" tabindex="-1"></a></span>
+<span id="cb2-105"><a href="#cb2-105" tabindex="-1"></a><span class="st">Thank you</span></span>
+<span id="cb2-106"><a href="#cb2-106" tabindex="-1"></a></span>
+<span id="cb2-107"><a href="#cb2-107" tabindex="-1"></a><span class="st">The senior team and University Executive all understand that it’s not an easy time. However, regardless of the challenges we face, there are so many reasons to feel proud of your contributions to the University and our community. I want to thank you for all that you do to continue delivering for our fantastic University.</span></span>
+<span id="cb2-108"><a href="#cb2-108" tabindex="-1"></a></span>
+<span id="cb2-109"><a href="#cb2-109" tabindex="-1"></a><span class="st">With best wishes for the new semester.</span></span>
+<span id="cb2-110"><a href="#cb2-110" tabindex="-1"></a></span>
+<span id="cb2-111"><a href="#cb2-111" tabindex="-1"></a><span class="st">Peter&quot;</span></span>
+<span id="cb2-112"><a href="#cb2-112" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" tabindex="-1"></a>email3 <span class="ot">&lt;-</span> <span class="st">&quot;Dear colleague,</span></span>
+<span id="cb2-114"><a href="#cb2-114" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" tabindex="-1"></a><span class="st">Thank you to everyone who came to our recent staff information sessions at EFI, Nucleus and the Chancellor’s Building. It was good to be able to speak directly with a range of staff and hear your passion for and commitment to our University and the work you do.</span></span>
+<span id="cb2-116"><a href="#cb2-116" tabindex="-1"></a></span>
+<span id="cb2-117"><a href="#cb2-117" tabindex="-1"></a><span class="st">Your questions in the staff sessions</span></span>
+<span id="cb2-118"><a href="#cb2-118" tabindex="-1"></a></span>
+<span id="cb2-119"><a href="#cb2-119" tabindex="-1"></a><span class="st">A few questions came across loud and clear and we wanted to provide clarity and reassurance on these.</span></span>
+<span id="cb2-120"><a href="#cb2-120" tabindex="-1"></a></span>
+<span id="cb2-121"><a href="#cb2-121" tabindex="-1"></a><span class="st">Are we in deficit? No, we are not. However, our costs are rising more than our income and if we had not already made some difficult decisions and taken several definitive actions, it is likely that we would by now be in financial deficit. As we can see from other institutions across the sector, this can result in loss of control over our own future. It would certainly prevent us investing in our continued research and teaching success. We want to avoid that through timely, targeted action.</span></span>
+<span id="cb2-122"><a href="#cb2-122" tabindex="-1"></a><span class="st">When will this be over? We recognise it is hard not knowing just now how things might change, or how your team or job might be affected. We want to get change right, and of course we properly consult staff where any structural changes might be proposed. Our aim is to be financially stable enough to allow us to invest again in our strategic priorities by August 2027. This means we hope the bulk of staffing reviews and any changes to ways of working will be completed by this point. Some larger projects, for example around infrastructure, will be longer term. We will continue to operate and evolve in an agile way in response to the world around us.</span></span>
+<span id="cb2-123"><a href="#cb2-123" tabindex="-1"></a><span class="st">What vision is guiding this work? We are staying true to Strategy 2030 and have set out an interim 2027 milestone as we navigate these challenges. You can read this on the University Finances SharePoint linked below under ‘Reshaping our University’.</span></span>
+<span id="cb2-124"><a href="#cb2-124" tabindex="-1"></a><span class="st">How are you tackling the financial pressures affecting higher education? We are in direct contact with the Scottish Government, Universities Scotland and sector colleagues to press for structural challenges and funding shortfalls to be addressed. We are also working via the Russell Group and Universities UK on those aspects of UK Government policy that directly affect us.</span></span>
+<span id="cb2-125"><a href="#cb2-125" tabindex="-1"></a></span>
+<span id="cb2-126"><a href="#cb2-126" tabindex="-1"></a><span class="st">We have updated our University Finances SharePoint with additional questions from these sessions, and other questions that colleagues have been raising:</span></span>
+<span id="cb2-127"><a href="#cb2-127" tabindex="-1"></a></span>
+<span id="cb2-128"><a href="#cb2-128" tabindex="-1"></a><span class="st">Visit University Finances SharePoint</span></span>
+<span id="cb2-129"><a href="#cb2-129" tabindex="-1"></a></span>
+<span id="cb2-130"><a href="#cb2-130" tabindex="-1"></a><span class="st">Update on finances</span></span>
+<span id="cb2-131"><a href="#cb2-131" tabindex="-1"></a></span>
+<span id="cb2-132"><a href="#cb2-132" tabindex="-1"></a><span class="st">Many thanks to everyone who has been working so hard to meet our student recruitment targets and to deliver wider cost savings. We are close to our budget forecast on tuition fee income, with notable drops in some areas including postgraduate taught overseas student intake and online learning student intakes. We are holding up well overall, given the increased competition for students across the board.</span></span>
+<span id="cb2-133"><a href="#cb2-133" tabindex="-1"></a></span>
+<span id="cb2-134"><a href="#cb2-134" tabindex="-1"></a><span class="st">Reshaping projects progress</span></span>
+<span id="cb2-135"><a href="#cb2-135" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" tabindex="-1"></a><span class="st">Last week, University Executive approved a second round of projects under our five workstreams for reshaping activity. We have now finalised our portfolio of projects for this financial year, and they are being planned and implemented.</span></span>
+<span id="cb2-137"><a href="#cb2-137" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" tabindex="-1"></a><span class="st">You can see the full list and get updates on current and future projects on SharePoint:</span></span>
+<span id="cb2-139"><a href="#cb2-139" tabindex="-1"></a></span>
+<span id="cb2-140"><a href="#cb2-140" tabindex="-1"></a><span class="st">Visit Supporting Strategic Initiatives SharePoint</span></span>
+<span id="cb2-141"><a href="#cb2-141" tabindex="-1"></a></span>
+<span id="cb2-142"><a href="#cb2-142" tabindex="-1"></a><span class="st">Thank you</span></span>
+<span id="cb2-143"><a href="#cb2-143" tabindex="-1"></a></span>
+<span id="cb2-144"><a href="#cb2-144" tabindex="-1"></a><span class="st">We fully acknowledge the anxiety and uncertainty that the current period of change is generating. Our focus is on ensuring our University has a sustainable future and a thriving workforce able to do what they do best – delivering and supporting world-leading research and teaching.</span></span>
+<span id="cb2-145"><a href="#cb2-145" tabindex="-1"></a></span>
+<span id="cb2-146"><a href="#cb2-146" tabindex="-1"></a><span class="st">Thank you for all you are contributing to our community and to our successes at this challenging time.</span></span>
+<span id="cb2-147"><a href="#cb2-147" tabindex="-1"></a></span>
+<span id="cb2-148"><a href="#cb2-148" tabindex="-1"></a><span class="st">Best wishes,</span></span>
+<span id="cb2-149"><a href="#cb2-149" tabindex="-1"></a><span class="st">Peter and Kim&quot;</span></span>
+<span id="cb2-150"><a href="#cb2-150" tabindex="-1"></a></span>
+<span id="cb2-151"><a href="#cb2-151" tabindex="-1"></a>email4 <span class="ot">&lt;-</span> <span class="st">&quot;Dear colleague,</span></span>
+<span id="cb2-152"><a href="#cb2-152" tabindex="-1"></a></span>
+<span id="cb2-153"><a href="#cb2-153" tabindex="-1"></a><span class="st">In our update last week, we let you know that information sessions are taking place this semester. These are opportunities for staff to speak to leaders about changes being made across the University to improve our ways of working and reduce costs.</span></span>
+<span id="cb2-154"><a href="#cb2-154" tabindex="-1"></a></span>
+<span id="cb2-155"><a href="#cb2-155" tabindex="-1"></a><span class="st">Meetings are already being held within Colleges and Professional Service Groups to discuss how these changes are being delivered in their areas. Three additional meetings will be taking place at various campus locations in November which are open to all staff:</span></span>
+<span id="cb2-156"><a href="#cb2-156" tabindex="-1"></a></span>
+<span id="cb2-157"><a href="#cb2-157" tabindex="-1"></a><span class="st">Monday 3 November, 14:00-15:30 – Edinburgh Futures Institute (Central)</span></span>
+<span id="cb2-158"><a href="#cb2-158" tabindex="-1"></a><span class="st">Wednesday 5 November, 14:00-15:30 – Nucleus Building (King’s Buildings)</span></span>
+<span id="cb2-159"><a href="#cb2-159" tabindex="-1"></a><span class="st">Monday 10 November, 09:30-11:00 – Chancellor’s Building (BioQuarter)</span></span>
+<span id="cb2-160"><a href="#cb2-160" tabindex="-1"></a></span>
+<span id="cb2-161"><a href="#cb2-161" tabindex="-1"></a><span class="st">Book your place</span></span>
+<span id="cb2-162"><a href="#cb2-162" tabindex="-1"></a></span>
+<span id="cb2-163"><a href="#cb2-163" tabindex="-1"></a><span class="st">What to expect at the sessions</span></span>
+<span id="cb2-164"><a href="#cb2-164" tabindex="-1"></a></span>
+<span id="cb2-165"><a href="#cb2-165" tabindex="-1"></a><span class="st">We have been keeping you up to date on the University’s financial position and the changes we are making in response, via regular emails and updates on SharePoint. While no new information or announcements will be shared at these sessions, they offer an opportunity for staff to speak to senior leaders about how we are delivering Strategy 2030 ambitions while reducing our costs and achieving financial sustainability.</span></span>
+<span id="cb2-166"><a href="#cb2-166" tabindex="-1"></a></span>
+<span id="cb2-167"><a href="#cb2-167" tabindex="-1"></a><span class="st">The meetings will include a short presentation and Q&amp;A, followed by break-out discussions to speak to leaders involved in some of our change projects. Questions asked at the sessions will inform future updates to you.</span></span>
+<span id="cb2-168"><a href="#cb2-168" tabindex="-1"></a></span>
+<span id="cb2-169"><a href="#cb2-169" tabindex="-1"></a><span class="st">Please continue to visit our SharePoint site for the latest information on this work:</span></span>
+<span id="cb2-170"><a href="#cb2-170" tabindex="-1"></a></span>
+<span id="cb2-171"><a href="#cb2-171" tabindex="-1"></a><span class="st">Visit the Supporting Strategic Initiatives SharePoint</span></span>
+<span id="cb2-172"><a href="#cb2-172" tabindex="-1"></a></span>
+<span id="cb2-173"><a href="#cb2-173" tabindex="-1"></a><span class="st">If you cannot make the sessions, you can still pre-submit a question in advance of the meetings or contact the relevant member of the Senior Leadership Team or change workstream with your query.</span></span>
+<span id="cb2-174"><a href="#cb2-174" tabindex="-1"></a></span>
+<span id="cb2-175"><a href="#cb2-175" tabindex="-1"></a><span class="st">Submit a question</span></span>
+<span id="cb2-176"><a href="#cb2-176" tabindex="-1"></a></span>
+<span id="cb2-177"><a href="#cb2-177" tabindex="-1"></a><span class="st">We look forward to seeing you there.</span></span>
+<span id="cb2-178"><a href="#cb2-178" tabindex="-1"></a></span>
+<span id="cb2-179"><a href="#cb2-179" tabindex="-1"></a><span class="st">Kind regards,</span></span>
+<span id="cb2-180"><a href="#cb2-180" tabindex="-1"></a></span>
+<span id="cb2-181"><a href="#cb2-181" tabindex="-1"></a><span class="st">Peter and Kim&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># combine the emails into a single list of documents</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>emails <span class="ot">&lt;-</span> <span class="fu">c</span>(email1, email2, email3, email4) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="co"># add a variable for row number</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">email =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+</div>
+<div id="regex-exercise-1" class="section level2" number="3">
+<h2><span class="header-section-number">3</span> Regex exercise</h2>
+<p>Use Regex and commands from the stringr package (check the online cheatsheet) to extract: - all the numbers - all the dates (e.g., 2026, 2027, 2025/26, etc.) - all the names mentioned in those emails - all the words related to finances (finance, financial, finances, financially, etc.)) and their frequency in each email</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># extract all the numbers</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">numbers =</span> <span class="fu">str_extract_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="co"># turn into a list of numbers</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  <span class="fu">unnest</span>(numbers) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  <span class="fu">group_by</span>(email)</span></code></pre></div>
+<pre><code>## # A tibble: 53 × 3
+## # Groups:   email [4]
+##    value                                                        email numbers
+##    &lt;chr&gt;                                                        &lt;int&gt; &lt;chr&gt;  
+##  1 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 2025   
+##  2 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 2026   
+##  3 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 27     
+##  4 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 2027   
+##  5 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 08     
+##  6 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 10     
+##  7 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 2026   
+##  8 &quot;Dear colleague,\n\nHappy New Year and welcome to the new s…     2 2025   
+##  9 &quot;Dear colleague,\n\nHappy New Year and welcome to the new s…     2 2024   
+## 10 &quot;Dear colleague,\n\nHappy New Year and welcome to the new s…     2 25     
+## # ℹ 43 more rows</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># extract all the dates</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dates =</span> <span class="fu">str_extract_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="co"># turn into a list of numbers</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="fu">unnest</span>(dates) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">group_by</span>(email) </span></code></pre></div>
+<pre><code>## # A tibble: 17 × 3
+## # Groups:   email [4]
+##    value                                                          email dates
+##    &lt;chr&gt;                                                          &lt;int&gt; &lt;chr&gt;
+##  1 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 2025 
+##  2 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 2026 
+##  3 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 2027 
+##  4 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 2026 
+##  5 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2025 
+##  6 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2024 
+##  7 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2026 
+##  8 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2026 
+##  9 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2026 
+## 10 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2024 
+## 11 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2024 
+## 12 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2022 
+## 13 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2026 
+## 14 &quot;Dear colleague,\n\nThank you to everyone who came to our rec…     3 2027 
+## 15 &quot;Dear colleague,\n\nThank you to everyone who came to our rec…     3 2030 
+## 16 &quot;Dear colleague,\n\nThank you to everyone who came to our rec…     3 2027 
+## 17 &quot;Dear colleague,\n\nIn our update last week, we let you know …     4 2030</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">names =</span> <span class="fu">str_extract_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z][a-z]+</span><span class="sc">\\</span><span class="st">b&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="co"># turn into a list of numbers</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="fu">unnest</span>(names) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="fu">group_by</span>(email) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="fu">select</span>(names)</span></code></pre></div>
+<pre><code>## Adding missing grouping variables: `email`</code></pre>
+<pre><code>## # A tibble: 310 × 2
+## # Groups:   email [4]
+##    email names
+##    &lt;int&gt; &lt;chr&gt;
+##  1     1 Dear 
+##  2     1 Work 
+##  3     1 This 
+##  4     1 Staff
+##  5     1 Our  
+##  6     1 Staff
+##  7     1 Read 
+##  8     1 Staff
+##  9     1 It   
+## 10     1 This 
+## # ℹ 300 more rows</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># not enough - that just captures any capitalised word</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># let&#39;s say we want words that are capitalised and are not at the beginning of a sentence (i.e., not preceded by a full stop)</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">names =</span> <span class="fu">str_extract_all</span>(value, <span class="st">&quot;(?&lt;!</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">s)</span><span class="sc">\\</span><span class="st">b[A-Z][a-z]+</span><span class="sc">\\</span><span class="st">b&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="co"># turn into a list of numbers</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="fu">unnest</span>(names) <span class="sc">%&gt;%</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="fu">group_by</span>(email)</span></code></pre></div>
+<pre><code>## # A tibble: 239 × 3
+## # Groups:   email [4]
+##    value                                                          email names
+##    &lt;chr&gt;                                                          &lt;int&gt; &lt;chr&gt;
+##  1 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Dear 
+##  2 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Work 
+##  3 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Staff
+##  4 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Staff
+##  5 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Read 
+##  6 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Staff
+##  7 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 It   
+##  8 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 We   
+##  9 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Univ…
+## 10 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Coll…
+## # ℹ 229 more rows</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># still doesn&#39;t work because a lot of words are preceded by e.g. paragraph breaks.</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># let&#39;s have a look at our text again, we might be able to find patterns, e.g. &quot;Mr&quot;, &quot;Dr&quot;, &quot;Professor&quot;, etc</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># As it happens there are very few names in these emails - only the signatures. So how would we capture those? Maybe the last line of the email?</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co">#extract the signature (i.e. the last line of each text)</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">signature =</span> <span class="fu">str_extract</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+</span><span class="sc">\\</span><span class="st">z&quot;</span>)) </span></code></pre></div>
+<pre><code>## # A tibble: 4 × 3
+##   value                                                       email signature
+##   &lt;chr&gt;                                                       &lt;int&gt; &lt;chr&gt;    
+## 1 &quot;Dear colleague,\n\nWork is continuing across our five cha…     1 Peter    
+## 2 &quot;Dear colleague,\n\nHappy New Year and welcome to the new …     2 Peter    
+## 3 &quot;Dear colleague,\n\nThank you to everyone who came to our …     3 Kim      
+## 4 &quot;Dear colleague,\n\nIn our update last week, we let you kn…     4 Kim</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">signature =</span> <span class="fu">str_extract</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b(.*)$&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">select</span>(signature)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 1
+##   signature    
+##   &lt;chr&gt;        
+## 1 Peter        
+## 2 Peter        
+## 3 Peter and Kim
+## 4 Peter and Kim</code></pre>
+</div>
+<div id="topic-model-demo" class="section level2" number="4">
+<h2><span class="header-section-number">4</span> Topic model demo</h2>
+<p>Estimating a topic model requires us first to have our data in the form of a document-term-matrix. This is another term for what we have referred to in previous weeks as a document-feature-matrix.</p>
+<p>We can take some example data from the <code>topicmodels</code> package. This text is from news releases by the Associated Press. It consists of around 2,200 articles (documents) and over 10,000 terms (words).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;AssociatedPress&quot;</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>     <span class="at">package =</span> <span class="st">&quot;topicmodels&quot;</span>)</span></code></pre></div>
+<p>To estimate the topic model we need only to specify the document-term-matrix we are using, and the number (<code>k</code>) of topics that we are estimating. To speed up estimation, we are here only estimating it on 100 articles.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>lda_output <span class="ot">&lt;-</span> <span class="fu">LDA</span>(AssociatedPress[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,], <span class="at">k =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>We can then inspect the contents of each topic as follows.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">terms</span>(lda_output, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##       Topic 1    Topic 2      Topic 3      Topic 4     Topic 5     
+##  [1,] &quot;percent&quot;  &quot;percent&quot;    &quot;i&quot;          &quot;year&quot;      &quot;new&quot;       
+##  [2,] &quot;prices&quot;   &quot;rose&quot;       &quot;new&quot;        &quot;warming&quot;   &quot;california&quot;
+##  [3,] &quot;oil&quot;      &quot;new&quot;        &quot;rating&quot;     &quot;summit&quot;    &quot;percent&quot;   
+##  [4,] &quot;new&quot;      &quot;report&quot;     &quot;roberts&quot;    &quot;global&quot;    &quot;two&quot;       
+##  [5,] &quot;gas&quot;      &quot;businesses&quot; &quot;barry&quot;      &quot;people&quot;    &quot;york&quot;      
+##  [6,] &quot;rate&quot;     &quot;year&quot;       &quot;moore&quot;      &quot;united&quot;    &quot;air&quot;       
+##  [7,] &quot;year&quot;     &quot;production&quot; &quot;magellan&quot;   &quot;program&quot;   &quot;animals&quot;   
+##  [8,] &quot;index&quot;    &quot;goods&quot;      &quot;spacecraft&quot; &quot;officials&quot; &quot;city&quot;      
+##  [9,] &quot;congress&quot; &quot;blackowned&quot; &quot;years&quot;      &quot;skins&quot;     &quot;last&quot;      
+## [10,] &quot;people&quot;   &quot;children&quot;   &quot;ago&quot;        &quot;baker&quot;     &quot;receptor&quot;  
+##       Topic 6    Topic 7      Topic 8          Topic 9      Topic 10  
+##  [1,] &quot;company&quot;  &quot;national&quot;   &quot;bank&quot;           &quot;soviet&quot;     &quot;bush&quot;    
+##  [2,] &quot;duracell&quot; &quot;people&quot;     &quot;i&quot;              &quot;noriega&quot;    &quot;dukakis&quot; 
+##  [3,] &quot;peres&quot;    &quot;waste&quot;      &quot;year&quot;           &quot;agents&quot;     &quot;state&quot;   
+##  [4,] &quot;central&quot;  &quot;north&quot;      &quot;new&quot;            &quot;panama&quot;     &quot;i&quot;       
+##  [5,] &quot;john&quot;     &quot;officials&quot;  &quot;percent&quot;        &quot;new&quot;        &quot;fire&quot;    
+##  [6,] &quot;church&quot;   &quot;state&quot;      &quot;soviet&quot;         &quot;polish&quot;     &quot;campaign&quot;
+##  [7,] &quot;new&quot;      &quot;government&quot; &quot;administration&quot; &quot;government&quot; &quot;central&quot; 
+##  [8,] &quot;official&quot; &quot;first&quot;      &quot;gorbachevs&quot;     &quot;officers&quot;   &quot;snow&quot;    
+##  [9,] &quot;million&quot;  &quot;two&quot;        &quot;greyhound&quot;      &quot;officials&quot;  &quot;southern&quot;
+## [10,] &quot;bar&quot;      &quot;years&quot;      &quot;thats&quot;          &quot;diplomatic&quot; &quot;monday&quot;</code></pre>
+<p>We can then use the <code>tidy()</code> function from <code>tidytext</code> to gather the relevant parameters we’ve estimated. To get the <span class="math inline">\(\beta\)</span> per-topic-per-word probabilities (i.e., the probability that the given term belongs to a given topic) we can do the following.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>lda_beta <span class="ot">&lt;-</span> <span class="fu">tidy</span>(lda_output, <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>lda_beta <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>beta)</span></code></pre></div>
+<pre><code>## # A tibble: 104,730 × 3
+##    topic term      beta
+##    &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;
+##  1     2 percent 0.0231
+##  2     1 percent 0.0215
+##  3    10 bush    0.0186
+##  4     9 soviet  0.0175
+##  5    10 dukakis 0.0145
+##  6     4 year    0.0125
+##  7     5 new     0.0122
+##  8     3 i       0.0120
+##  9     8 bank    0.0110
+## 10    10 state   0.0108
+## # ℹ 104,720 more rows</code></pre>
+<p>And to get the <span class="math inline">\(\gamma\)</span> per-document-per-topic probabilities (i.e., the probability that a given document (here: article) belongs to a particular topic) we do the following.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>lda_gamma <span class="ot">&lt;-</span> <span class="fu">tidy</span>(lda_output, <span class="at">matrix =</span> <span class="st">&quot;gamma&quot;</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>lda_gamma <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>gamma)</span></code></pre></div>
+<pre><code>## # A tibble: 1,000 × 3
+##    document topic gamma
+##       &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+##  1       76     8 1.000
+##  2       81     6 1.000
+##  3        6     9 1.000
+##  4       43     3 1.000
+##  5       31     1 1.000
+##  6       95     5 1.000
+##  7       77    10 1.000
+##  8       29     9 1.000
+##  9       80     1 1.000
+## 10       57     1 1.000
+## # ℹ 990 more rows</code></pre>
+<p>And we can easily plot our <span class="math inline">\(\beta\)</span> estimates as follows.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>lda_beta <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">10</span>, beta) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta) <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder_within</span>(term, beta, topic)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(beta, term, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a>  <span class="fu">scale_y_reordered</span>() <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a>  <span class="fu">theme_tufte</span>(<span class="at">base_family =</span> <span class="st">&quot;Helvetica&quot;</span>)</span></code></pre></div>
+<p><img src="06-week6demo_files/figure-html/unnamed-chunk-48-1.png" alt="" width="672" /></p>
+<p>Which shows us the words associated with each topic, and the size of the associated <span class="math inline">\(\beta\)</span> coefficient.</p>
+</div>
+<div id="word-embedding-analysis" class="section level2" number="5">
+<h2><span class="header-section-number">5</span> 1.Word Embedding Analysis</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">library</span>(widyr)</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">library</span>(RSpectra)</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a><span class="co"># create skipgrams</span></span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a>tidy_skipgrams <span class="ot">&lt;-</span> emails <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(ngram, value, <span class="at">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ngramID =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(skipgramID, ngramID) <span class="sc">%&gt;%</span></span>
+<span id="cb26-11"><a href="#cb26-11" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, ngram)</span>
+<span id="cb26-12"><a href="#cb26-12" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" tabindex="-1"></a><span class="co"># co-occurrence</span></span>
+<span id="cb26-14"><a href="#cb26-14" tabindex="-1"></a>skipgram_probs <span class="ot">&lt;-</span> tidy_skipgrams <span class="sc">%&gt;%</span></span>
+<span id="cb26-15"><a href="#cb26-15" tabindex="-1"></a>  <span class="fu">pairwise_count</span>(word, skipgramID, <span class="at">diag =</span> <span class="cn">TRUE</span>, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-16"><a href="#cb26-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb26-17"><a href="#cb26-17" tabindex="-1"></a></span>
+<span id="cb26-18"><a href="#cb26-18" tabindex="-1"></a><span class="co"># unigram</span></span>
+<span id="cb26-19"><a href="#cb26-19" tabindex="-1"></a>unigram_probs <span class="ot">&lt;-</span> emails <span class="sc">%&gt;%</span></span>
+<span id="cb26-20"><a href="#cb26-20" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, value) <span class="sc">%&gt;%</span></span>
+<span id="cb26-21"><a href="#cb26-21" tabindex="-1"></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb26-22"><a href="#cb26-22" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb26-23"><a href="#cb26-23" tabindex="-1"></a></span>
+<span id="cb26-24"><a href="#cb26-24" tabindex="-1"></a><span class="co"># PMI</span></span>
+<span id="cb26-25"><a href="#cb26-25" tabindex="-1"></a>normalized_prob <span class="ot">&lt;-</span> skipgram_probs <span class="sc">%&gt;%</span></span>
+<span id="cb26-26"><a href="#cb26-26" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-27"><a href="#cb26-27" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">word1 =</span> item1, <span class="at">word2 =</span> item2) <span class="sc">%&gt;%</span></span>
+<span id="cb26-28"><a href="#cb26-28" tabindex="-1"></a>  <span class="fu">left_join</span>(unigram_probs <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">word1 =</span> word, <span class="at">p1 =</span> p), <span class="at">by =</span> <span class="st">&quot;word1&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-29"><a href="#cb26-29" tabindex="-1"></a>  <span class="fu">left_join</span>(unigram_probs <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">word2 =</span> word, <span class="at">p2 =</span> p), <span class="at">by =</span> <span class="st">&quot;word2&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-30"><a href="#cb26-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_together =</span> p <span class="sc">/</span> p1 <span class="sc">/</span> p2)</span>
+<span id="cb26-31"><a href="#cb26-31" tabindex="-1"></a></span>
+<span id="cb26-32"><a href="#cb26-32" tabindex="-1"></a><span class="co"># matrix</span></span>
+<span id="cb26-33"><a href="#cb26-33" tabindex="-1"></a>pmi_matrix <span class="ot">&lt;-</span> normalized_prob <span class="sc">%&gt;%</span></span>
+<span id="cb26-34"><a href="#cb26-34" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pmi =</span> <span class="fu">log10</span>(p_together)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-35"><a href="#cb26-35" tabindex="-1"></a>  <span class="fu">cast_sparse</span>(word1, word2, pmi)</span>
+<span id="cb26-36"><a href="#cb26-36" tabindex="-1"></a></span>
+<span id="cb26-37"><a href="#cb26-37" tabindex="-1"></a>pmi_matrix<span class="sc">@</span>x[<span class="fu">is.na</span>(pmi_matrix<span class="sc">@</span>x)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb26-38"><a href="#cb26-38" tabindex="-1"></a></span>
+<span id="cb26-39"><a href="#cb26-39" tabindex="-1"></a><span class="co"># SVD</span></span>
+<span id="cb26-40"><a href="#cb26-40" tabindex="-1"></a>pmi_svd <span class="ot">&lt;-</span> <span class="fu">svds</span>(pmi_matrix, <span class="dv">50</span>)</span>
+<span id="cb26-41"><a href="#cb26-41" tabindex="-1"></a></span>
+<span id="cb26-42"><a href="#cb26-42" tabindex="-1"></a>word_vectors <span class="ot">&lt;-</span> pmi_svd<span class="sc">$</span>u</span>
+<span id="cb26-43"><a href="#cb26-43" tabindex="-1"></a><span class="fu">rownames</span>(word_vectors) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(pmi_matrix)</span></code></pre></div>
+<p>At this stage, I apply Singular Value Decomposition (SVD) to the PMI matrix in order to generate word embeddings. The PMI matrix captures how strongly words co-occur relative to chance, and SVD reduces this high-dimensional matrix into a lower-dimensional space.
+The resulting object, <code>word_vectors</code>, represents each word as a numeric vector. Words that appear in similar contexts will have similar vector representations. This allows us to measure semantic similarity between words using vector operations, such as the dot product.
+In this model, each word is represented as a 50-dimensional vector. This dimensionality is a design choice that balances capturing semantic variation while keeping the model computationally efficient.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">dim</span>(word_vectors)</span></code></pre></div>
+<pre><code>## [1] 844  50</code></pre>
+<p>The resulting word embedding matrix contains 844 unique words, each represented as a 50-dimensional vector. This means that every word in the corpus is mapped onto a point in a 50-dimensional semantic space. Words that appear in similar contexts are expected to have similar vector representations, allowing us to measure semantic similarity between words.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>nearest_words <span class="ot">&lt;-</span> <span class="cf">function</span>(word_vectors, word){</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>  selected_vector <span class="ot">=</span> word_vectors[word,]</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>  mult <span class="ot">=</span> <span class="fu">as.data.frame</span>(word_vectors <span class="sc">%*%</span> selected_vector)</span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>  mult <span class="sc">%&gt;%</span></span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">word =</span> rowname,</span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>           <span class="at">similarity =</span> V1) <span class="sc">%&gt;%</span></span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="sc">-</span>similarity)</span>
+<span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;government&quot;</span>)</span></code></pre></div>
+<pre><code>##                word    similarity
+## 1             under  1.207071e-15
+## 2         reshaping  1.172739e-15
+## 3              help  1.148870e-15
+## 4           college  9.927938e-16
+## 5                us  9.398899e-16
+## 6             union  9.305719e-16
+## 7                uk  8.436703e-16
+## 8              will  8.270776e-16
+## 9            things  7.350797e-16
+## 10          aspects  7.085315e-16
+## 11              how  7.059413e-16
+## 12            place  6.558974e-16
+## 13            those  6.242790e-16
+## 14             term  5.795893e-16
+## 15      initiatives  5.785860e-16
+## 16           taking  5.196455e-16
+## 17             seek  4.928516e-16
+## 18               25  4.661016e-16
+## 19       university  4.472647e-16
+## 20          require  4.353160e-16
+## 21               is  4.247519e-16
+## 22             2024  4.208010e-16
+## 23          explore  4.133820e-16
+## 24            speak  3.984434e-16
+## 25            focus  3.970627e-16
+## 26       commitment  3.399652e-16
+## 27       generating  3.378551e-16
+## 28         optional  3.378551e-16
+## 29         directly  3.281331e-16
+## 30             best  3.223295e-16
+## 31               at  3.012880e-16
+## 32               do  2.974694e-16
+## 33             work  2.901906e-16
+## 34        processes  2.725395e-16
+## 35        strategic  2.709352e-16
+## 36           wishes  2.657289e-16
+## 37        executive  2.643779e-16
+## 38           report  2.580910e-16
+## 39           submit  2.460920e-16
+## 40         question  2.460920e-16
+## 41             what  2.459928e-16
+## 42          provide  2.427008e-16
+## 43            where  2.363960e-16
+## 44            these  2.262135e-16
+## 45            there  2.253721e-16
+## 46         accounts  2.186245e-16
+## 47       supporting  2.185506e-16
+## 48         meetings  2.172472e-16
+## 49          further  2.169684e-16
+## 50          forward  1.937959e-16
+## 51               so  1.867208e-16
+## 52              you  1.857676e-16
+## 53             plan  1.821262e-16
+## 54           within  1.799877e-16
+## 55             look  1.799498e-16
+## 56              all  1.756246e-16
+## 57              for  1.718729e-16
+## 58           period  1.694188e-16
+## 59           future  1.680079e-16
+## 60             they  1.623502e-16
+## 61          reshape  1.563471e-16
+## 62        community  1.547697e-16
+## 63             this  1.523440e-16
+## 64           cannot  1.463346e-16
+## 65         sessions  1.457817e-16
+## 66               to  1.414561e-16
+## 67      uncertainty  1.412666e-16
+## 68           grades  1.412193e-16
+## 69        recognise  1.310718e-16
+## 70              can  1.270863e-16
+## 71    opportunities  1.251235e-16
+## 72            thank  1.239791e-16
+## 73              our  1.208189e-16
+## 74          example  1.094658e-16
+## 75            roles  1.054977e-16
+## 76        available  1.021419e-16
+## 77            staff  1.002285e-16
+## 78          leaders  9.835061e-17
+## 79          arising  9.696535e-17
+## 80          impacts  9.696535e-17
+## 81      sustainable  9.239754e-17
+## 82            again  9.153309e-17
+## 83             into  8.627514e-17
+## 84      expenditure  8.539081e-17
+## 85          reasons  8.234276e-17
+## 86        regrading  8.217769e-17
+## 87        operating  8.113691e-17
+## 88              see  7.934542e-17
+## 89            means  7.559351e-17
+## 90            might  7.474092e-17
+## 91               in  7.345135e-17
+## 92           higher  7.101737e-17
+## 93             2026  6.979046e-17
+## 94             take  6.907421e-17
+## 95      recruitment  6.637715e-17
+## 96          welcome  6.343554e-17
+## 97               62  6.343554e-17
+## 98          patents  6.343554e-17
+## 99         possible  6.177673e-17
+## 100        learning  6.120616e-17
+## 101          intake  6.120616e-17
+## 102             new  6.084281e-17
+## 103          rising  5.920755e-17
+## 104          moving  5.920755e-17
+## 105      assessment  5.815313e-17
+## 106        academic  5.241177e-17
+## 107         student  5.081181e-17
+## 108       education  5.074340e-17
+## 109            were  4.830806e-17
+## 110          matter  4.830806e-17
+## 111         develop  4.830806e-17
+## 112            high  4.830806e-17
+## 113            back  4.830806e-17
+## 114          enough  4.830806e-17
+## 115        minimise  4.830806e-17
+## 116        critical  4.830806e-17
+## 117           allow  4.830806e-17
+## 118      considered  4.830806e-17
+## 119         respond  4.830806e-17
+## 120   contributions  4.830806e-17
+## 121            feel  4.830806e-17
+## 122          damage  4.830806e-17
+## 123        together  4.830806e-17
+## 124         recruit  4.830806e-17
+## 125         aligned  4.830806e-17
+## 126            many  4.609382e-17
+## 127            meet  4.490447e-17
+## 128    postgraduate  4.386160e-17
+## 129             way  4.248015e-17
+## 130          awards  4.248015e-17
+## 131          112.6m  4.248015e-17
+## 132           agile  4.248015e-17
+## 133         secured  4.248015e-17
+## 134         process  3.971968e-17
+## 135        includes  3.886990e-17
+## 136              go  3.791503e-17
+## 137      workstream  3.655844e-17
+## 138      promotions  3.553925e-17
+## 139     innovations  3.454151e-17
+## 140        involved  3.299104e-17
+## 141        response  3.299104e-17
+## 142        december  3.299104e-17
+## 143          thanks  3.147248e-17
+## 144      innovation  3.082203e-17
+## 145        activity  3.082203e-17
+## 146        progress  2.901056e-17
+## 147            only  2.719464e-17
+## 148           costs  2.664821e-17
+## 149        strength  2.535768e-17
+## 150       continued  2.526918e-17
+## 151          launch  2.468112e-17
+## 152             its  2.468112e-17
+## 153           areas  2.089075e-17
+## 154          making  2.066827e-17
+## 155         quality  1.845498e-17
+## 156          stable  1.845498e-17
+## 157            came  1.845498e-17
+## 158     financially  1.845498e-17
+## 159         deliver  1.687446e-17
+## 160       edinburgh  1.378715e-17
+## 161             are  1.367220e-17
+## 162        semester  1.118138e-17
+## 163           local  9.511295e-18
+## 164            year  8.623812e-18
+## 165        reducing  7.624559e-18
+## 166             aim  7.612815e-18
+## 167       agreement  7.102782e-18
+## 168       currently  7.070681e-18
+## 169       addressed  6.755112e-18
+## 170         updates  6.555648e-18
+## 171           while  4.698403e-18
+## 172             300  1.582498e-18
+## 173        building  1.542403e-18
+## 174    chancellor’s  1.533123e-18
+## 175         nucleus  1.408529e-18
+## 176       colleague  7.311325e-29
+## 177          budget  5.423600e-29
+## 178            much  4.959658e-29
+## 179        measures  4.678473e-29
+## 180           break  3.995638e-29
+## 181            ucue  3.895027e-29
+## 182         mission  3.821458e-29
+## 183           needs  3.714237e-29
+## 184      government  3.190592e-29
+## 185         project  2.208572e-29
+## 186         greater  1.320484e-29
+## 187           still  1.005439e-29
+## 188          review  7.815469e-30
+## 189             job  6.437128e-30
+## 190          policy  4.210079e-30
+## 191    negotiations  3.559604e-30
+## 192          larger  3.548037e-30
+## 193      addressing  3.521922e-30
+## 194            mean  3.456042e-30
+## 195              50  3.423820e-30
+## 196      commercial  3.420770e-30
+## 197           power  3.400737e-30
+## 198           grade  3.370979e-30
+## 199          whilst  3.369229e-30
+## 200       extensive  3.361140e-30
+## 201    contributing  3.358462e-30
+## 202        rankings  3.356935e-30
+## 203             4th  3.340962e-30
+## 204            easy  3.333833e-30
+## 205          paused  3.330553e-30
+## 206           prior  3.322165e-30
+## 207          safety  3.286415e-30
+## 208          needed  3.283972e-30
+## 209    successfully  3.261732e-30
+## 210    applications  3.243896e-30
+## 211    demonstrated  3.221315e-30
+## 212      renovation  3.213521e-30
+## 213         focused  3.203170e-30
+## 214         russell  3.186451e-30
+## 215          secure  3.172430e-30
+## 216        overseas  3.167309e-30
+## 217       portfolio  3.155307e-30
+## 218          placed  3.141695e-30
+## 219      particular  3.127148e-30
+## 220      structural  3.125086e-30
+## 221            faqs  3.115370e-30
+## 222       attracted  3.107347e-30
+## 223            very  3.081113e-30
+## 224      unwavering  3.077094e-30
+## 225       buildings  3.064005e-30
+## 226         advance  3.030888e-30
+## 227            them  3.029753e-30
+## 228            ue08  3.013478e-30
+## 229     substantial  3.003396e-30
+## 230       rewarding  2.992703e-30
+## 231        problems  2.988726e-30
+## 232       dedicated  2.949840e-30
+## 233            book  2.940333e-30
+## 234            date  2.892484e-30
+## 235 internationally  2.892351e-30
+## 236         surveys  2.883810e-30
+## 237       affecting  2.865405e-30
+## 238            size  2.839936e-30
+## 239          before  2.830230e-30
+## 240           bring  2.829330e-30
+## 241            face  2.816357e-30
+## 242        tackling  2.810884e-30
+## 243        training  2.794274e-30
+## 244        followed  2.775218e-30
+## 245       diversity  2.769614e-30
+## 246           wider  2.762064e-30
+## 247      especially  2.747275e-30
+## 248             pre  2.715077e-30
+## 249           until  2.705187e-30
+## 250            true  2.702164e-30
+## 251            next  2.697956e-30
+## 252         serious  2.694946e-30
+## 253         answers  2.687370e-30
+## 254            wish  2.684439e-30
+## 255         efforts  2.623597e-30
+## 256            113m  2.575069e-30
+## 257           query  2.556660e-30
+## 258        staffing  2.555468e-30
+## 259         history  2.518878e-30
+## 260         intakes  2.514187e-30
+## 261           joint  2.504512e-30
+## 262          iconic  2.500578e-30
+## 263              am  2.481920e-30
+## 264            fire  2.469179e-30
+## 265       elizabeth  2.443642e-30
+## 266        offering  2.440163e-30
+## 267          taught  2.439543e-30
+## 268         acutely  2.439141e-30
+## 269          honour  2.436325e-30
+## 270          expect  2.430376e-30
+## 271            hire  2.427284e-30
+## 272           drops  2.420642e-30
+## 273         related  2.413107e-30
+## 274     prioritised  2.394384e-30
+## 275              64  2.387529e-30
+## 276        thriving  2.358921e-30
+## 277         someone  2.358354e-30
+## 278       essential  2.356578e-30
+## 279       cancelled  2.324266e-30
+## 280      absolutely  2.246571e-30
+## 281              27  2.235130e-30
+## 282       institute  2.226375e-30
+## 283          thrive  2.208850e-30
+## 284           force  2.146426e-30
+## 285         raising  2.133072e-30
+## 286            keep  2.117617e-30
+## 287         sincere  2.111086e-30
+## 288         towards  2.081496e-30
+## 289     considering  2.032505e-30
+## 290      resilience  2.002426e-30
+## 291        approach  2.000710e-30
+## 292     advertising  1.996606e-30
+## 293       generated  1.996135e-30
+## 294        maximise  1.973196e-30
+## 295            bulk  1.933498e-30
+## 296        external  1.931553e-30
+## 297            sets  1.920200e-30
+## 298            long  1.917129e-30
+## 299         careful  1.914068e-30
+## 300        internal  1.907236e-30
+## 301         knowing  1.900040e-30
+## 302            lead  1.861578e-30
+## 303         procure  1.836537e-30
+## 304     intervening  1.830933e-30
+## 305      regardless  1.827241e-30
+## 306       permanent  1.790693e-30
+## 307   affordability  1.782744e-30
+## 308       completed  1.779988e-30
+## 309          entire  1.757316e-30
+## 310   consideration  1.727268e-30
+## 311      optimistic  1.706121e-30
+## 312         website  1.694594e-30
+## 313     procurement  1.694242e-30
+## 314       suppliers  1.674663e-30
+## 315    underpinning  1.624817e-30
+## 316         operate  1.612118e-30
+## 317         prevent  1.601947e-30
+## 318            held  1.595906e-30
+## 319          vision  1.584468e-30
+## 320         success  1.577379e-30
+## 321           trade  1.533989e-30
+## 322         options  1.505522e-30
+## 323        platform  1.487268e-30
+## 324        scotland  1.454804e-30
+## 325       finalised  1.374882e-30
+## 326       component  1.361829e-30
+## 327     edinburgh’s  1.349778e-30
+## 328            it’s  1.285359e-30
+## 329          annual  1.237995e-30
+## 330            rest  1.224635e-30
+## 331         prepare  1.222758e-30
+## 332        afforded  1.222562e-30
+## 333      shortfalls  1.213235e-30
+## 334           steps  1.209541e-30
+## 335         futures  1.161176e-30
+## 336         funding  1.157651e-30
+## 337   engineering’s  1.120546e-30
+## 338        scottish  1.114204e-30
+## 339       supported  1.104570e-30
+## 340         product  1.093954e-30
+## 341          extend  1.065518e-30
+## 342     responsible  1.026035e-30
+## 343      bioquarter  1.008952e-30
+## 344        consider  1.006261e-30
+## 345         running  9.890393e-31
+## 346             fee  9.489983e-31
+## 347            give  9.420311e-31
+## 348        supports  9.216289e-31
+## 349         festive  9.133725e-31
+## 350     discussions  8.779965e-31
+## 351      protecting  8.774884e-31
+## 352      tremendous  8.712725e-31
+## 353             172  8.594744e-31
+## 354         overall  8.571121e-31
+## 355           asked  8.407888e-31
+## 356      identified  8.401930e-31
+## 357       fantastic  8.388417e-31
+## 358          modest  7.950283e-31
+## 359          groups  7.946853e-31
+## 360        delaying  7.048172e-31
+## 361          repair  6.923932e-31
+## 362          result  6.623649e-31
+## 363          second  6.287866e-31
+## 364        affected  6.201678e-31
+## 365         interim  5.984544e-31
+## 366         keeping  5.968574e-31
+## 367         various  5.733678e-31
+## 368        provides  5.622770e-31
+## 369          people  5.449815e-31
+## 370           board  5.439988e-31
+## 371       reinstate  5.426076e-31
+## 372       emphasise  5.365476e-31
+## 373           since  4.987304e-31
+## 374        actively  4.973740e-31
+## 375            fair  4.879560e-31
+## 376             i’d  4.582932e-31
+## 377        navigate  4.557872e-31
+## 378          direct  4.209272e-31
+## 379       reopening  4.208716e-31
+## 380            core  4.186652e-31
+## 381         enjoyed  4.101703e-31
+## 382          ranked  3.976744e-31
+## 383          winter  3.874641e-31
+## 384      engagement  3.835952e-31
+## 385        equality  3.451464e-31
+## 386      confirming  3.220875e-31
+## 387        achieved  3.070214e-31
+## 388       recurrent  2.886296e-31
+## 389           found  2.312077e-31
+## 390        medicine  2.289652e-31
+## 391         holding  2.286692e-31
+## 392            like  2.185566e-31
+## 393      parameters  1.979477e-31
+## 394          seeing  1.603301e-31
+## 395         control  1.448280e-31
+## 396        estimate  1.134263e-31
+## 397          affect  1.053915e-31
+## 398         include  9.700867e-32
+## 399         several  9.535457e-32
+## 400            loss  9.426413e-32
+## 401        wherever  7.421197e-32
+## 402            room  6.575709e-32
+## 403        detailed  6.205820e-32
+## 404         tuition  5.850199e-32
+## 405      equivalent  4.125137e-32
+## 406         despite  3.853016e-32
+## 407      timeliness  3.494855e-32
+## 408       resilient  2.451335e-32
+## 409        approval  3.202121e-34
+## 410           loved -1.629726e-32
+## 411            2022 -4.276497e-32
+## 412         staying -4.891257e-32
+## 413  manufacturer’s -6.921805e-32
+## 414             had -9.419083e-32
+## 415    environments -1.211943e-31
+## 416           aware -1.268896e-31
+## 417     significant -1.346407e-31
+## 418     exceptional -1.373872e-31
+## 419       challenge -1.382398e-31
+## 420          55,000 -1.386122e-31
+## 421    constructive -1.433556e-31
+## 422            body -1.502378e-31
+## 423   accessibility -1.581477e-31
+## 424             let -1.592136e-31
+## 425              qs -1.704784e-31
+## 426       delivered -1.842075e-31
+## 427             i’m -1.886505e-31
+## 428          august -1.966173e-31
+## 429        comments -1.966645e-31
+## 430        targeted -2.187103e-31
+## 431       delighted -2.252370e-31
+## 432       certainly -2.450138e-31
+## 433        outlined -2.598251e-31
+## 434     environment -2.618063e-31
+## 435            each -2.831555e-31
+## 436             win -2.980118e-31
+## 437         monitor -3.363932e-31
+## 438            show -3.491879e-31
+## 439          recent -3.715039e-31
+## 440       situation -3.787808e-31
+## 441           built -4.405019e-31
+## 442           minor -4.485408e-31
+## 443          emails -4.488139e-31
+## 444          credit -5.133515e-31
+## 445       workforce -5.184211e-31
+## 446           queen -5.220406e-31
+## 447           group -5.245751e-31
+## 448            once -5.503451e-31
+## 449          campus -5.722562e-31
+## 450        licenses -6.165908e-31
+## 451         service -6.231829e-31
+## 452    capitalising -6.371511e-31
+## 453       extending -6.433826e-31
+## 454    particularly -6.563609e-31
+## 455          become -6.701108e-31
+## 456             efi -6.968776e-31
+## 457          course -6.978972e-31
+## 458       offerings -7.126753e-31
+## 459   organisations -7.286221e-31
+## 460       investing -7.563595e-31
+## 461         because -7.566649e-31
+## 462          prefer -7.603182e-31
+## 463         lightly -7.716052e-31
+## 464       positives -7.939433e-31
+## 465           range -7.959928e-31
+## 466         another -8.177616e-31
+## 467      exceptions -8.355165e-31
+## 468      calculator -8.679117e-31
+## 469          effort -9.440522e-31
+## 470     opportunity -9.691417e-31
+## 471          modern -1.000918e-30
+## 472      definitive -1.075520e-30
+## 473           round -1.084797e-30
+## 474           point -1.085199e-30
+## 475          agreed -1.093951e-30
+## 476          career -1.096221e-30
+## 477         details -1.162685e-30
+## 478           goods -1.180702e-30
+## 479         mindful -1.186704e-30
+## 480        national -1.196630e-30
+## 481          regard -1.204526e-30
+## 482       programme -1.209136e-30
+## 483          driven -1.225733e-30
+## 484      internally -1.232708e-30
+## 485         regular -1.251334e-30
+## 486           safer -1.251690e-30
+## 487       necessary -1.299780e-30
+## 488             two -1.300700e-30
+## 489          invest -1.300968e-30
+## 490             fit -1.342621e-30
+## 491          inform -1.345216e-30
+## 492      healthcare -1.366662e-30
+## 493       detailing -1.370047e-30
+## 494      automation -1.396539e-30
+## 495    institutions -1.411144e-30
+## 496         winning -1.422532e-30
+## 497     performance -1.423559e-30
+## 498           sites -1.430593e-30
+## 499          indeed -1.432437e-30
+## 500       milestone -1.451894e-30
+##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 344 rows ]</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;university&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##          word similarity
+## 1  university 0.26104875
+## 2     college 0.22744129
+## 3       union 0.19191611
+## 4    finances 0.11526758
+## 5   executive 0.09576521
+## 6     reshape 0.08618376
+## 7       visit 0.08285229
+## 8        best 0.07894105
+## 9      across 0.06630575
+## 10        has 0.06488970</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;staff&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##          word similarity
+## 1       staff 0.21088352
+## 2         non 0.18831547
+## 3      reduce 0.17723992
+## 4       costs 0.15770670
+## 5       speak 0.09470253
+## 6   operating 0.08440282
+## 7       other 0.07870018
+## 8  workstream 0.07198272
+## 9        from 0.06735273
+## 10  questions 0.06527681</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;students&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##          word  similarity
+## 1         the 0.027512637
+## 2         our 0.024042429
+## 3  experience 0.016662884
+## 4   improving 0.016376697
+## 5       under 0.011891660
+## 6        plan 0.010260132
+## 7   reshaping 0.010240860
+## 8   community 0.009869635
+## 9       world 0.007389759
+## 10     around 0.007339988</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;financial&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##           word similarity
+## 1    financial 0.06478905
+## 2            a 0.05966375
+## 3          the 0.05666165
+## 4     position 0.05333557
+## 5  sustainable 0.03563490
+## 6         year 0.03249273
+## 7         that 0.02970866
+## 8       future 0.02947316
+## 9         this 0.02938830
+## 10    question 0.02930094</code></pre>
+<p>To explore the semantic structure captured by the word embeddings, I examined the nearest neighbours of several key terms in the corpus, including “university”, “staff”, and “government”.
+The results for “university” show a relatively coherent semantic cluster, with closely related words such as “college”, “union”, “finances”, and “executive”. These terms reflect the institutional and administrative context of the emails, suggesting that the model successfully captures meaningful associations between words that frequently co-occur in similar contexts.
+Similarly, the term “staff” is associated with words such as “reduce”, “costs”, “operating”, and “workstream”, which reflect discussions of organisational change and financial pressures within the university. This indicates that the embedding is able to capture policy-related and managerial themes present in the text.
+In contrast, the results for “government” are less coherent, with many associated terms being generic or weakly related. This suggests that the model struggles to capture clear semantic relationships for some words.
+Overall, these differences likely reflect the limited size of the corpus, which consists of only a small number of emails. With fewer co-occurrence patterns available, the model has less information to learn stable word associations, leading to weaker or noisier embeddings for some terms.</p>
+</div>
+<div id="setup-1" class="section level2" number="6">
+<h2><span class="header-section-number">6</span> Setup</h2>
+<p>First, we’ll load the packages we’ll be using in this week’s brief demo.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="co"># there are sometimes problem with installing topicmodels on Mac OS X. You can find help on Ken benoit&#39;s page here: https://kenbenoit.net/how-to-install-the-r-package-topicmodels-on-os-x/. For me, this required installing gsl and modeltools.</span></span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb40-10"><a href="#cb40-10" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+</div>
+<div id="regex-exercise-2" class="section level2" number="7">
+<h2><span class="header-section-number">7</span> Regex exercise</h2>
+<p>We’ll start with a quick regex exercise to practice extracting information from text. For this exercise, we will use the text of the recent emails sent to academic staff by Peter Mathieson</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>email1 <span class="ot">&lt;-</span> <span class="st">&quot;Dear colleague,</span></span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a><span class="st">Work is continuing across our five change workstreams to identify savings in our operational spending. This includes costs that are related to both staff and non-staff (“other operating expenditure”).</span></span>
+<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" tabindex="-1"></a><span class="st">Staff costs are by far the largest component of our expenditure. Our Staff workstream is addressing this through projects to identify the right size and shape for our academic and professional staff body to deliver our future teaching and research model.</span></span>
+<span id="cb41-6"><a href="#cb41-6" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" tabindex="-1"></a><span class="st">Read the latest on Staff workstream projects</span></span>
+<span id="cb41-8"><a href="#cb41-8" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="#cb41-9" tabindex="-1"></a><span class="st">It has always been our approach to take actions that will seek to avoid compulsory redundancies. This commitment is unwavering.</span></span>
+<span id="cb41-10"><a href="#cb41-10" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="#cb41-11" tabindex="-1"></a><span class="st">We also continue to honour all terms of our agreement with the University and College Union Edinburgh (UCUE) made in December 2025. This agreement demonstrated what can be achieved with constructive engagement, and we will seek to continue working with our joint trade unions as we take the necessary steps to secure a sustainable future for our University.</span></span>
+<span id="cb41-12"><a href="#cb41-12" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="#cb41-13" tabindex="-1"></a><span class="st">Read more about the agreement with UCUE</span></span>
+<span id="cb41-14"><a href="#cb41-14" tabindex="-1"></a></span>
+<span id="cb41-15"><a href="#cb41-15" tabindex="-1"></a><span class="st">We are taking action in line with this commitment to help us reduce our costs whilst protecting jobs wherever possible. This includes new measures outlined below.</span></span>
+<span id="cb41-16"><a href="#cb41-16" tabindex="-1"></a></span>
+<span id="cb41-17"><a href="#cb41-17" tabindex="-1"></a><span class="st">Academic promotions and professional services job regrading</span></span>
+<span id="cb41-18"><a href="#cb41-18" tabindex="-1"></a></span>
+<span id="cb41-19"><a href="#cb41-19" tabindex="-1"></a><span class="st">Academic promotions and regrading of professional services roles remain paused until we reach a more stable financial position. This means that there will be no promotions or regrading processes in 2026/27.</span></span>
+<span id="cb41-20"><a href="#cb41-20" tabindex="-1"></a><span class="st">We recognise the concerns about this pause: the decision to extend it for another year has not been taken lightly. We all wish to be able to get back to a situation in which we can return to these processes, but it is responsible leadership to balance this desire with consideration of affordability.</span></span>
+<span id="cb41-21"><a href="#cb41-21" tabindex="-1"></a></span>
+<span id="cb41-22"><a href="#cb41-22" tabindex="-1"></a><span class="st">We will review this policy again in 2027, by which time we hope to be able to reinstate the promotions and regrading processes if we are confident that we are in a financial position to accommodate the increased costs associated with these schemes. In the meantime, we are using this intervening period to make improvements to the promotions and regrading schemes, including simplifying our processes and using automation where possible.</span></span>
+<span id="cb41-23"><a href="#cb41-23" tabindex="-1"></a></span>
+<span id="cb41-24"><a href="#cb41-24" tabindex="-1"></a><span class="st">The Equality Impact Assessment (EqIA) associated with this decision has been updated and is available to read on our website. We are mindful of the impact of continuing this pause, especially on making further progress towards ensuring diversity within higher grades. We will continue to monitor this and any arising impacts of this decision.  </span></span>
+<span id="cb41-25"><a href="#cb41-25" tabindex="-1"></a></span>
+<span id="cb41-26"><a href="#cb41-26" tabindex="-1"></a><span class="st">Read the EqIA</span></span>
+<span id="cb41-27"><a href="#cb41-27" tabindex="-1"></a></span>
+<span id="cb41-28"><a href="#cb41-28" tabindex="-1"></a><span class="st">Contribution rewards</span></span>
+<span id="cb41-29"><a href="#cb41-29" tabindex="-1"></a></span>
+<span id="cb41-30"><a href="#cb41-30" tabindex="-1"></a><span class="st">Our contribution recognition process was cancelled last year. Work to review and improve future recognition offerings will continue, with plans to replace this process with a scheme which remains fair, rewarding and fit for the future. We will provide further updates on how this work is progressing in the next academic year.</span></span>
+<span id="cb41-31"><a href="#cb41-31" tabindex="-1"></a></span>
+<span id="cb41-32"><a href="#cb41-32" tabindex="-1"></a><span class="st">Additional recruitment restraint for higher grade roles</span></span>
+<span id="cb41-33"><a href="#cb41-33" tabindex="-1"></a></span>
+<span id="cb41-34"><a href="#cb41-34" tabindex="-1"></a><span class="st">We are continuing to limit recruitment of new and replacement staff posts to only those roles considered critical to the University’s mission. We will now further limit recruitment of staff in grades UE08-10 and equivalent, where we have seen the largest increase in permanent roles over the last few years.</span></span>
+<span id="cb41-35"><a href="#cb41-35" tabindex="-1"></a><span class="st">Processes to consider roles within these grades are currently being developed and will likely require approval both within budget areas and by other senior leaders.</span></span>
+<span id="cb41-36"><a href="#cb41-36" tabindex="-1"></a></span>
+<span id="cb41-37"><a href="#cb41-37" tabindex="-1"></a><span class="st">Changes to recruitment processes</span></span>
+<span id="cb41-38"><a href="#cb41-38" tabindex="-1"></a></span>
+<span id="cb41-39"><a href="#cb41-39" tabindex="-1"></a><span class="st">Where recruitment for new or replacement posts has been approved, these roles must now be advertised internally for two weeks prior to external advertising, with only minor agreed exceptions. This commitment supports our aim to maximise internal career opportunities, while continuing to recruit high-quality staff aligned to prioritised organisational needs.   </span></span>
+<span id="cb41-40"><a href="#cb41-40" tabindex="-1"></a></span>
+<span id="cb41-41"><a href="#cb41-41" tabindex="-1"></a><span class="st">More information on this change is available in our updated recruitment guidance.</span></span>
+<span id="cb41-42"><a href="#cb41-42" tabindex="-1"></a></span>
+<span id="cb41-43"><a href="#cb41-43" tabindex="-1"></a><span class="st">View the updated recruitment guidance</span></span>
+<span id="cb41-44"><a href="#cb41-44" tabindex="-1"></a></span>
+<span id="cb41-45"><a href="#cb41-45" tabindex="-1"></a><span class="st">Voluntary Severance Scheme for academic staff</span></span>
+<span id="cb41-46"><a href="#cb41-46" tabindex="-1"></a></span>
+<span id="cb41-47"><a href="#cb41-47" tabindex="-1"></a><span class="st">We are currently offering a Voluntary Severance Scheme which is open to applications from academic staff. Details of this scheme are available on the SharePoint site linked below. This includes answers to common questions and an estimate calculator so you can see what voluntary severance would mean for you financially.</span></span>
+<span id="cb41-48"><a href="#cb41-48" tabindex="-1"></a></span>
+<span id="cb41-49"><a href="#cb41-49" tabindex="-1"></a><span class="st">Voluntary Severance Scheme 2026 SharePoint</span></span>
+<span id="cb41-50"><a href="#cb41-50" tabindex="-1"></a></span>
+<span id="cb41-51"><a href="#cb41-51" tabindex="-1"></a><span class="st">Thank you to everyone who is working hard to identify savings that will help us meet our cost-savings targets. The senior team and I understand how difficult this period is for everyone within our community. However, through these changes we aim to become a more efficient and resilient institution, focused on our core mission of delivering exceptional teaching and research.</span></span>
+<span id="cb41-52"><a href="#cb41-52" tabindex="-1"></a></span>
+<span id="cb41-53"><a href="#cb41-53" tabindex="-1"></a><span class="st">I recognise that there is still uncertainty about some aspects of the measures we are taking to reshape our University, and we will continue to update you on this work as it develops. Please continue to visit the University Finances SharePoint for the latest information and FAQs:</span></span>
+<span id="cb41-54"><a href="#cb41-54" tabindex="-1"></a></span>
+<span id="cb41-55"><a href="#cb41-55" tabindex="-1"></a><span class="st">University Finances SharePoint</span></span>
+<span id="cb41-56"><a href="#cb41-56" tabindex="-1"></a></span>
+<span id="cb41-57"><a href="#cb41-57" tabindex="-1"></a><span class="st">Best wishes,</span></span>
+<span id="cb41-58"><a href="#cb41-58" tabindex="-1"></a><span class="st">Peter&quot;</span></span>
+<span id="cb41-59"><a href="#cb41-59" tabindex="-1"></a></span>
+<span id="cb41-60"><a href="#cb41-60" tabindex="-1"></a>email2 <span class="ot">&lt;-</span> <span class="st">&quot;Dear colleague,</span></span>
+<span id="cb41-61"><a href="#cb41-61" tabindex="-1"></a></span>
+<span id="cb41-62"><a href="#cb41-62" tabindex="-1"></a><span class="st">Happy New Year and welcome to the new semester. I hope you enjoyed the festivities and found time to rest over the winter break. As always, my sincere thanks go to those who continued to deliver our essential services over the festive period.</span></span>
+<span id="cb41-63"><a href="#cb41-63" tabindex="-1"></a><span class="st">      </span></span>
+<span id="cb41-64"><a href="#cb41-64" tabindex="-1"></a><span class="st">Financial sustainability</span></span>
+<span id="cb41-65"><a href="#cb41-65" tabindex="-1"></a></span>
+<span id="cb41-66"><a href="#cb41-66" tabindex="-1"></a><span class="st">There is no doubt that 2025 was a busy and challenging year. The ongoing financial challenges facing the University and the entire Higher Education sector are very serious, and I’m acutely aware that this year will bring further uncertainty for many of you while we continue to develop plans to reshape the University and build greater financial sustainability. Our aim is to give people clarity as quickly and fairly as we can.</span></span>
+<span id="cb41-67"><a href="#cb41-67" tabindex="-1"></a></span>
+<span id="cb41-68"><a href="#cb41-68" tabindex="-1"></a><span class="st">Our latest annual report and accounts will be published this month, once again demonstrating that our expenditure growth continues to outpace our income growth. We have always been clear that we must take action immediately to address these challenges and indeed the 2024/25 accounts report a modest surplus because of the actions that we took in that financial year. Without those actions, the institution would now already be running at a deficit each month, confirming that delaying difficult decisions would only lead to far greater problems in the future.</span></span>
+<span id="cb41-69"><a href="#cb41-69" tabindex="-1"></a></span>
+<span id="cb41-70"><a href="#cb41-70" tabindex="-1"></a><span class="st">Work will continue this year to identify savings in our operational spending through our five change workstreams. The agreement with the University and College Union in December provides clear parameters for the work of our staff workstream moving forward. Our commitment to staff remains that we will continue to take actions with the aim of preventing the need for compulsory redundancies. Where any redundancies are required, we will always provide voluntary options before considering the need for compulsory action. We are also working to ensure that comments and feedback from last year’s staff survey are addressed through our change programme.</span></span>
+<span id="cb41-71"><a href="#cb41-71" tabindex="-1"></a></span>
+<span id="cb41-72"><a href="#cb41-72" tabindex="-1"></a><span class="st">Read more on the union agreement</span></span>
+<span id="cb41-73"><a href="#cb41-73" tabindex="-1"></a></span>
+<span id="cb41-74"><a href="#cb41-74" tabindex="-1"></a><span class="st">As well as needing to reduce staff costs, we need to reduce non-staff costs, for example in the ways we procure supplies and services. Colleagues in Procurement have identified substantial recurrent savings by careful alignment of our needs and detailed negotiations with suppliers, all without reducing the quality of goods or services.</span></span>
+<span id="cb41-75"><a href="#cb41-75" tabindex="-1"></a></span>
+<span id="cb41-76"><a href="#cb41-76" tabindex="-1"></a><span class="st">I want to emphasise that change is not optional: it is absolutely required right across the University and all its activities. For example, in our efforts to reduce non-staff costs (and thereby protect as many jobs as possible) there will be examples where someone might prefer a particular product, online platform or manufacturer’s equipment and have to accept that their preference can no longer be afforded.</span></span>
+<span id="cb41-77"><a href="#cb41-77" tabindex="-1"></a></span>
+<span id="cb41-78"><a href="#cb41-78" tabindex="-1"></a><span class="st">Reducing our costs and improving our ways of working will require collective effort from all of us, and we need to work together to successfully deliver the changes needed. This process will be difficult; however, I am confident that through actions already taken and the projects underway to explore how we will work in future, we are well placed to respond to the challenge of restoring financial sustainability and resilience.</span></span>
+<span id="cb41-79"><a href="#cb41-79" tabindex="-1"></a></span>
+<span id="cb41-80"><a href="#cb41-80" tabindex="-1"></a><span class="st">We will continue to keep you updated about the changes being made across the University by email and by updates on our dedicated SharePoint sites. There will also be continued opportunities this year for you to feed into these changes directly and to speak to leaders across the University about how they will impact you.</span></span>
+<span id="cb41-81"><a href="#cb41-81" tabindex="-1"></a></span>
+<span id="cb41-82"><a href="#cb41-82" tabindex="-1"></a><span class="st">Find information and updates from our workstreams</span></span>
+<span id="cb41-83"><a href="#cb41-83" tabindex="-1"></a><span class="st">Visit our University Finances SharePoint</span></span>
+<span id="cb41-84"><a href="#cb41-84" tabindex="-1"></a></span>
+<span id="cb41-85"><a href="#cb41-85" tabindex="-1"></a><span class="st">Our continued impact</span></span>
+<span id="cb41-86"><a href="#cb41-86" tabindex="-1"></a></span>
+<span id="cb41-87"><a href="#cb41-87" tabindex="-1"></a><span class="st">Despite the ongoing uncertainty, there is so much that we can be proud of and there are many reasons to remain optimistic as we move into 2026. The University is a tremendous force for good and the changes we are making will help us to continue delivering local and global impact this year and long into the future. I’d like to highlight just a few examples.</span></span>
+<span id="cb41-88"><a href="#cb41-88" tabindex="-1"></a><span class="st">     </span></span>
+<span id="cb41-89"><a href="#cb41-89" tabindex="-1"></a><span class="st">The University has recently been ranked 4th in the world and 2nd in the UK in the 2026 QS World University Rankings for Sustainability. This feels particularly apt as we prepare to launch our new sustainability strategy in the spring, which sets out our plans to not only minimise damage to the environment, but actively repair it. Read more about our sustainability credentials</span></span>
+<span id="cb41-90"><a href="#cb41-90" tabindex="-1"></a><span class="st">2026 marks 300 years of medical education at the University - we believe ours to be the oldest medical school in the English-speaking world. The &#39;Edinburgh Medical School 300’ project will explore Edinburgh’s history in shaping modern medicine and set the stage for future innovations in medical education and healthcare. Get involved in Edinburgh Medical School 300</span></span>
+<span id="cb41-91"><a href="#cb41-91" tabindex="-1"></a><span class="st">Our research and innovation outputs continue to go from strength to strength. We were proud to win a Queen Elizabeth Prize for Higher Education last year in recognition of the Centre for Fire Safety Engineering’s education, training and internationally significant research which has for 50 years made built and natural environments safer around the world. Find out more about the award-winning project</span></span>
+<span id="cb41-92"><a href="#cb41-92" tabindex="-1"></a><span class="st">Our commercial activity continues to thrive, driven and supported by colleagues in Edinburgh Innovations. We secured £112.6m in research awards in 2024/25, attracted £113m investment into University-associated companies, generated 172 new patents, 62 new licenses and launched 64 companies. Read The Power of Innovation 2024/5</span></span>
+<span id="cb41-93"><a href="#cb41-93" tabindex="-1"></a><span class="st">Our new Community Plan was launched last semester, detailing how we will continue to work with our local communities on solutions to the challenges that matter to them. This includes extending our Community Access to Rooms Scheme which, since its launch in 2022, has saved more than 180 local organisations an estimated £55,000 in room hire costs. View our Community Plan</span></span>
+<span id="cb41-94"><a href="#cb41-94" tabindex="-1"></a><span class="st">     </span></span>
+<span id="cb41-95"><a href="#cb41-95" tabindex="-1"></a><span class="st">Improving staff and student experience</span></span>
+<span id="cb41-96"><a href="#cb41-96" tabindex="-1"></a></span>
+<span id="cb41-97"><a href="#cb41-97" tabindex="-1"></a><span class="st">Underpinning our work to reshape the University is our commitment to improving the experience of our students as well as our staff.</span></span>
+<span id="cb41-98"><a href="#cb41-98" tabindex="-1"></a></span>
+<span id="cb41-99"><a href="#cb41-99" tabindex="-1"></a><span class="st">I was delighted to see improvements to our performance in last year’s National Student Survey. Our Postgraduate surveys also continue to show positives and we have made good progress in the last year with regard to timeliness of assessment feedback. This is all credit to the hard work of teams across the University and we look forward to capitalising on this progress and making further improvements in 2026.</span></span>
+<span id="cb41-100"><a href="#cb41-100" tabindex="-1"></a></span>
+<span id="cb41-101"><a href="#cb41-101" tabindex="-1"></a><span class="st">This spring will also see the reopening of our iconic and much-loved Students’ Union building Teviot after extensive renovation works and improvements to accessibility.  </span></span>
+<span id="cb41-102"><a href="#cb41-102" tabindex="-1"></a><span class="st"> </span></span>
+<span id="cb41-103"><a href="#cb41-103" tabindex="-1"></a><span class="st">Teviot building works</span></span>
+<span id="cb41-104"><a href="#cb41-104" tabindex="-1"></a></span>
+<span id="cb41-105"><a href="#cb41-105" tabindex="-1"></a><span class="st">Thank you</span></span>
+<span id="cb41-106"><a href="#cb41-106" tabindex="-1"></a></span>
+<span id="cb41-107"><a href="#cb41-107" tabindex="-1"></a><span class="st">The senior team and University Executive all understand that it’s not an easy time. However, regardless of the challenges we face, there are so many reasons to feel proud of your contributions to the University and our community. I want to thank you for all that you do to continue delivering for our fantastic University.</span></span>
+<span id="cb41-108"><a href="#cb41-108" tabindex="-1"></a></span>
+<span id="cb41-109"><a href="#cb41-109" tabindex="-1"></a><span class="st">With best wishes for the new semester.</span></span>
+<span id="cb41-110"><a href="#cb41-110" tabindex="-1"></a></span>
+<span id="cb41-111"><a href="#cb41-111" tabindex="-1"></a><span class="st">Peter&quot;</span></span>
+<span id="cb41-112"><a href="#cb41-112" tabindex="-1"></a></span>
+<span id="cb41-113"><a href="#cb41-113" tabindex="-1"></a>email3 <span class="ot">&lt;-</span> <span class="st">&quot;Dear colleague,</span></span>
+<span id="cb41-114"><a href="#cb41-114" tabindex="-1"></a></span>
+<span id="cb41-115"><a href="#cb41-115" tabindex="-1"></a><span class="st">Thank you to everyone who came to our recent staff information sessions at EFI, Nucleus and the Chancellor’s Building. It was good to be able to speak directly with a range of staff and hear your passion for and commitment to our University and the work you do.</span></span>
+<span id="cb41-116"><a href="#cb41-116" tabindex="-1"></a></span>
+<span id="cb41-117"><a href="#cb41-117" tabindex="-1"></a><span class="st">Your questions in the staff sessions</span></span>
+<span id="cb41-118"><a href="#cb41-118" tabindex="-1"></a></span>
+<span id="cb41-119"><a href="#cb41-119" tabindex="-1"></a><span class="st">A few questions came across loud and clear and we wanted to provide clarity and reassurance on these.</span></span>
+<span id="cb41-120"><a href="#cb41-120" tabindex="-1"></a></span>
+<span id="cb41-121"><a href="#cb41-121" tabindex="-1"></a><span class="st">Are we in deficit? No, we are not. However, our costs are rising more than our income and if we had not already made some difficult decisions and taken several definitive actions, it is likely that we would by now be in financial deficit. As we can see from other institutions across the sector, this can result in loss of control over our own future. It would certainly prevent us investing in our continued research and teaching success. We want to avoid that through timely, targeted action.</span></span>
+<span id="cb41-122"><a href="#cb41-122" tabindex="-1"></a><span class="st">When will this be over? We recognise it is hard not knowing just now how things might change, or how your team or job might be affected. We want to get change right, and of course we properly consult staff where any structural changes might be proposed. Our aim is to be financially stable enough to allow us to invest again in our strategic priorities by August 2027. This means we hope the bulk of staffing reviews and any changes to ways of working will be completed by this point. Some larger projects, for example around infrastructure, will be longer term. We will continue to operate and evolve in an agile way in response to the world around us.</span></span>
+<span id="cb41-123"><a href="#cb41-123" tabindex="-1"></a><span class="st">What vision is guiding this work? We are staying true to Strategy 2030 and have set out an interim 2027 milestone as we navigate these challenges. You can read this on the University Finances SharePoint linked below under ‘Reshaping our University’.</span></span>
+<span id="cb41-124"><a href="#cb41-124" tabindex="-1"></a><span class="st">How are you tackling the financial pressures affecting higher education? We are in direct contact with the Scottish Government, Universities Scotland and sector colleagues to press for structural challenges and funding shortfalls to be addressed. We are also working via the Russell Group and Universities UK on those aspects of UK Government policy that directly affect us.</span></span>
+<span id="cb41-125"><a href="#cb41-125" tabindex="-1"></a></span>
+<span id="cb41-126"><a href="#cb41-126" tabindex="-1"></a><span class="st">We have updated our University Finances SharePoint with additional questions from these sessions, and other questions that colleagues have been raising:</span></span>
+<span id="cb41-127"><a href="#cb41-127" tabindex="-1"></a></span>
+<span id="cb41-128"><a href="#cb41-128" tabindex="-1"></a><span class="st">Visit University Finances SharePoint</span></span>
+<span id="cb41-129"><a href="#cb41-129" tabindex="-1"></a></span>
+<span id="cb41-130"><a href="#cb41-130" tabindex="-1"></a><span class="st">Update on finances</span></span>
+<span id="cb41-131"><a href="#cb41-131" tabindex="-1"></a></span>
+<span id="cb41-132"><a href="#cb41-132" tabindex="-1"></a><span class="st">Many thanks to everyone who has been working so hard to meet our student recruitment targets and to deliver wider cost savings. We are close to our budget forecast on tuition fee income, with notable drops in some areas including postgraduate taught overseas student intake and online learning student intakes. We are holding up well overall, given the increased competition for students across the board.</span></span>
+<span id="cb41-133"><a href="#cb41-133" tabindex="-1"></a></span>
+<span id="cb41-134"><a href="#cb41-134" tabindex="-1"></a><span class="st">Reshaping projects progress</span></span>
+<span id="cb41-135"><a href="#cb41-135" tabindex="-1"></a></span>
+<span id="cb41-136"><a href="#cb41-136" tabindex="-1"></a><span class="st">Last week, University Executive approved a second round of projects under our five workstreams for reshaping activity. We have now finalised our portfolio of projects for this financial year, and they are being planned and implemented.</span></span>
+<span id="cb41-137"><a href="#cb41-137" tabindex="-1"></a></span>
+<span id="cb41-138"><a href="#cb41-138" tabindex="-1"></a><span class="st">You can see the full list and get updates on current and future projects on SharePoint:</span></span>
+<span id="cb41-139"><a href="#cb41-139" tabindex="-1"></a></span>
+<span id="cb41-140"><a href="#cb41-140" tabindex="-1"></a><span class="st">Visit Supporting Strategic Initiatives SharePoint</span></span>
+<span id="cb41-141"><a href="#cb41-141" tabindex="-1"></a></span>
+<span id="cb41-142"><a href="#cb41-142" tabindex="-1"></a><span class="st">Thank you</span></span>
+<span id="cb41-143"><a href="#cb41-143" tabindex="-1"></a></span>
+<span id="cb41-144"><a href="#cb41-144" tabindex="-1"></a><span class="st">We fully acknowledge the anxiety and uncertainty that the current period of change is generating. Our focus is on ensuring our University has a sustainable future and a thriving workforce able to do what they do best – delivering and supporting world-leading research and teaching.</span></span>
+<span id="cb41-145"><a href="#cb41-145" tabindex="-1"></a></span>
+<span id="cb41-146"><a href="#cb41-146" tabindex="-1"></a><span class="st">Thank you for all you are contributing to our community and to our successes at this challenging time.</span></span>
+<span id="cb41-147"><a href="#cb41-147" tabindex="-1"></a></span>
+<span id="cb41-148"><a href="#cb41-148" tabindex="-1"></a><span class="st">Best wishes,</span></span>
+<span id="cb41-149"><a href="#cb41-149" tabindex="-1"></a><span class="st">Peter and Kim&quot;</span></span>
+<span id="cb41-150"><a href="#cb41-150" tabindex="-1"></a></span>
+<span id="cb41-151"><a href="#cb41-151" tabindex="-1"></a>email4 <span class="ot">&lt;-</span> <span class="st">&quot;Dear colleague,</span></span>
+<span id="cb41-152"><a href="#cb41-152" tabindex="-1"></a></span>
+<span id="cb41-153"><a href="#cb41-153" tabindex="-1"></a><span class="st">In our update last week, we let you know that information sessions are taking place this semester. These are opportunities for staff to speak to leaders about changes being made across the University to improve our ways of working and reduce costs.</span></span>
+<span id="cb41-154"><a href="#cb41-154" tabindex="-1"></a></span>
+<span id="cb41-155"><a href="#cb41-155" tabindex="-1"></a><span class="st">Meetings are already being held within Colleges and Professional Service Groups to discuss how these changes are being delivered in their areas. Three additional meetings will be taking place at various campus locations in November which are open to all staff:</span></span>
+<span id="cb41-156"><a href="#cb41-156" tabindex="-1"></a></span>
+<span id="cb41-157"><a href="#cb41-157" tabindex="-1"></a><span class="st">Monday 3 November, 14:00-15:30 – Edinburgh Futures Institute (Central)</span></span>
+<span id="cb41-158"><a href="#cb41-158" tabindex="-1"></a><span class="st">Wednesday 5 November, 14:00-15:30 – Nucleus Building (King’s Buildings)</span></span>
+<span id="cb41-159"><a href="#cb41-159" tabindex="-1"></a><span class="st">Monday 10 November, 09:30-11:00 – Chancellor’s Building (BioQuarter)</span></span>
+<span id="cb41-160"><a href="#cb41-160" tabindex="-1"></a></span>
+<span id="cb41-161"><a href="#cb41-161" tabindex="-1"></a><span class="st">Book your place</span></span>
+<span id="cb41-162"><a href="#cb41-162" tabindex="-1"></a></span>
+<span id="cb41-163"><a href="#cb41-163" tabindex="-1"></a><span class="st">What to expect at the sessions</span></span>
+<span id="cb41-164"><a href="#cb41-164" tabindex="-1"></a></span>
+<span id="cb41-165"><a href="#cb41-165" tabindex="-1"></a><span class="st">We have been keeping you up to date on the University’s financial position and the changes we are making in response, via regular emails and updates on SharePoint. While no new information or announcements will be shared at these sessions, they offer an opportunity for staff to speak to senior leaders about how we are delivering Strategy 2030 ambitions while reducing our costs and achieving financial sustainability.</span></span>
+<span id="cb41-166"><a href="#cb41-166" tabindex="-1"></a></span>
+<span id="cb41-167"><a href="#cb41-167" tabindex="-1"></a><span class="st">The meetings will include a short presentation and Q&amp;A, followed by break-out discussions to speak to leaders involved in some of our change projects. Questions asked at the sessions will inform future updates to you.</span></span>
+<span id="cb41-168"><a href="#cb41-168" tabindex="-1"></a></span>
+<span id="cb41-169"><a href="#cb41-169" tabindex="-1"></a><span class="st">Please continue to visit our SharePoint site for the latest information on this work:</span></span>
+<span id="cb41-170"><a href="#cb41-170" tabindex="-1"></a></span>
+<span id="cb41-171"><a href="#cb41-171" tabindex="-1"></a><span class="st">Visit the Supporting Strategic Initiatives SharePoint</span></span>
+<span id="cb41-172"><a href="#cb41-172" tabindex="-1"></a></span>
+<span id="cb41-173"><a href="#cb41-173" tabindex="-1"></a><span class="st">If you cannot make the sessions, you can still pre-submit a question in advance of the meetings or contact the relevant member of the Senior Leadership Team or change workstream with your query.</span></span>
+<span id="cb41-174"><a href="#cb41-174" tabindex="-1"></a></span>
+<span id="cb41-175"><a href="#cb41-175" tabindex="-1"></a><span class="st">Submit a question</span></span>
+<span id="cb41-176"><a href="#cb41-176" tabindex="-1"></a></span>
+<span id="cb41-177"><a href="#cb41-177" tabindex="-1"></a><span class="st">We look forward to seeing you there.</span></span>
+<span id="cb41-178"><a href="#cb41-178" tabindex="-1"></a></span>
+<span id="cb41-179"><a href="#cb41-179" tabindex="-1"></a><span class="st">Kind regards,</span></span>
+<span id="cb41-180"><a href="#cb41-180" tabindex="-1"></a></span>
+<span id="cb41-181"><a href="#cb41-181" tabindex="-1"></a><span class="st">Peter and Kim&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="co"># combine the emails into a single list of documents</span></span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>emails <span class="ot">&lt;-</span> <span class="fu">c</span>(email1, email2, email3, email4) <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a>  as_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a>  <span class="co"># add a variable for row number</span></span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">email =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+</div>
+<div id="regex-exercise-3" class="section level2" number="8">
+<h2><span class="header-section-number">8</span> Regex exercise</h2>
+<p>Use Regex and commands from the stringr package (check the online cheatsheet) to extract: - all the numbers - all the dates (e.g., 2026, 2027, 2025/26, etc.) - all the names mentioned in those emails - all the words related to finances (finance, financial, finances, financially, etc.)) and their frequency in each email</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="co"># extract all the numbers</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">numbers =</span> <span class="fu">str_extract_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>  <span class="co"># turn into a list of numbers</span></span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a>  <span class="fu">unnest</span>(numbers) <span class="sc">%&gt;%</span></span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a>  <span class="fu">group_by</span>(email)</span></code></pre></div>
+<pre><code>## # A tibble: 53 × 3
+## # Groups:   email [4]
+##    value                                                        email numbers
+##    &lt;chr&gt;                                                        &lt;int&gt; &lt;chr&gt;  
+##  1 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 2025   
+##  2 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 2026   
+##  3 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 27     
+##  4 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 2027   
+##  5 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 08     
+##  6 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 10     
+##  7 &quot;Dear colleague,\n\nWork is continuing across our five chan…     1 2026   
+##  8 &quot;Dear colleague,\n\nHappy New Year and welcome to the new s…     2 2025   
+##  9 &quot;Dear colleague,\n\nHappy New Year and welcome to the new s…     2 2024   
+## 10 &quot;Dear colleague,\n\nHappy New Year and welcome to the new s…     2 25     
+## # ℹ 43 more rows</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co"># extract all the dates</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dates =</span> <span class="fu">str_extract_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{4}&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>  <span class="co"># turn into a list of numbers</span></span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a>  <span class="fu">unnest</span>(dates) <span class="sc">%&gt;%</span></span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a>  <span class="fu">group_by</span>(email) </span></code></pre></div>
+<pre><code>## # A tibble: 17 × 3
+## # Groups:   email [4]
+##    value                                                          email dates
+##    &lt;chr&gt;                                                          &lt;int&gt; &lt;chr&gt;
+##  1 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 2025 
+##  2 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 2026 
+##  3 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 2027 
+##  4 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 2026 
+##  5 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2025 
+##  6 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2024 
+##  7 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2026 
+##  8 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2026 
+##  9 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2026 
+## 10 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2024 
+## 11 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2024 
+## 12 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2022 
+## 13 &quot;Dear colleague,\n\nHappy New Year and welcome to the new sem…     2 2026 
+## 14 &quot;Dear colleague,\n\nThank you to everyone who came to our rec…     3 2027 
+## 15 &quot;Dear colleague,\n\nThank you to everyone who came to our rec…     3 2030 
+## 16 &quot;Dear colleague,\n\nThank you to everyone who came to our rec…     3 2027 
+## 17 &quot;Dear colleague,\n\nIn our update last week, we let you know …     4 2030</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">names =</span> <span class="fu">str_extract_all</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z][a-z]+</span><span class="sc">\\</span><span class="st">b&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a>  <span class="co"># turn into a list of numbers</span></span>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a>  <span class="fu">unnest</span>(names) <span class="sc">%&gt;%</span></span>
+<span id="cb47-5"><a href="#cb47-5" tabindex="-1"></a>  <span class="fu">group_by</span>(email) <span class="sc">%&gt;%</span></span>
+<span id="cb47-6"><a href="#cb47-6" tabindex="-1"></a>  <span class="fu">select</span>(names)</span></code></pre></div>
+<pre><code>## Adding missing grouping variables: `email`</code></pre>
+<pre><code>## # A tibble: 310 × 2
+## # Groups:   email [4]
+##    email names
+##    &lt;int&gt; &lt;chr&gt;
+##  1     1 Dear 
+##  2     1 Work 
+##  3     1 This 
+##  4     1 Staff
+##  5     1 Our  
+##  6     1 Staff
+##  7     1 Read 
+##  8     1 Staff
+##  9     1 It   
+## 10     1 This 
+## # ℹ 300 more rows</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="co"># not enough - that just captures any capitalised word</span></span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a><span class="co"># let&#39;s say we want words that are capitalised and are not at the beginning of a sentence (i.e., not preceded by a full stop)</span></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb50-5"><a href="#cb50-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">names =</span> <span class="fu">str_extract_all</span>(value, <span class="st">&quot;(?&lt;!</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">s)</span><span class="sc">\\</span><span class="st">b[A-Z][a-z]+</span><span class="sc">\\</span><span class="st">b&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-6"><a href="#cb50-6" tabindex="-1"></a>  <span class="co"># turn into a list of numbers</span></span>
+<span id="cb50-7"><a href="#cb50-7" tabindex="-1"></a>  <span class="fu">unnest</span>(names) <span class="sc">%&gt;%</span></span>
+<span id="cb50-8"><a href="#cb50-8" tabindex="-1"></a>  <span class="fu">group_by</span>(email)</span></code></pre></div>
+<pre><code>## # A tibble: 239 × 3
+## # Groups:   email [4]
+##    value                                                          email names
+##    &lt;chr&gt;                                                          &lt;int&gt; &lt;chr&gt;
+##  1 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Dear 
+##  2 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Work 
+##  3 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Staff
+##  4 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Staff
+##  5 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Read 
+##  6 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Staff
+##  7 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 It   
+##  8 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 We   
+##  9 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Univ…
+## 10 &quot;Dear colleague,\n\nWork is continuing across our five change…     1 Coll…
+## # ℹ 229 more rows</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="co"># still doesn&#39;t work because a lot of words are preceded by e.g. paragraph breaks.</span></span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a><span class="co"># let&#39;s have a look at our text again, we might be able to find patterns, e.g. &quot;Mr&quot;, &quot;Dr&quot;, &quot;Professor&quot;, etc</span></span>
+<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a><span class="co"># As it happens there are very few names in these emails - only the signatures. So how would we capture those? Maybe the last line of the email?</span></span>
+<span id="cb52-4"><a href="#cb52-4" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" tabindex="-1"></a><span class="co">#extract the signature (i.e. the last line of each text)</span></span>
+<span id="cb52-6"><a href="#cb52-6" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb52-7"><a href="#cb52-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">signature =</span> <span class="fu">str_extract</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+</span><span class="sc">\\</span><span class="st">z&quot;</span>)) </span></code></pre></div>
+<pre><code>## # A tibble: 4 × 3
+##   value                                                       email signature
+##   &lt;chr&gt;                                                       &lt;int&gt; &lt;chr&gt;    
+## 1 &quot;Dear colleague,\n\nWork is continuing across our five cha…     1 Peter    
+## 2 &quot;Dear colleague,\n\nHappy New Year and welcome to the new …     2 Peter    
+## 3 &quot;Dear colleague,\n\nThank you to everyone who came to our …     3 Kim      
+## 4 &quot;Dear colleague,\n\nIn our update last week, we let you kn…     4 Kim</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>emails <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">signature =</span> <span class="fu">str_extract</span>(value, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b(.*)$&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a>  <span class="fu">select</span>(signature)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 1
+##   signature    
+##   &lt;chr&gt;        
+## 1 Peter        
+## 2 Peter        
+## 3 Peter and Kim
+## 4 Peter and Kim</code></pre>
+</div>
+<div id="topic-model-demo-1" class="section level2" number="9">
+<h2><span class="header-section-number">9</span> Topic model demo</h2>
+<p>Estimating a topic model requires us first to have our data in the form of a document-term-matrix. This is another term for what we have referred to in previous weeks as a document-feature-matrix.</p>
+<p>We can take some example data from the <code>topicmodels</code> package. This text is from news releases by the Associated Press. It consists of around 2,200 articles (documents) and over 10,000 terms (words).</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;AssociatedPress&quot;</span>, </span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>     <span class="at">package =</span> <span class="st">&quot;topicmodels&quot;</span>)</span></code></pre></div>
+<p>To estimate the topic model we need only to specify the document-term-matrix we are using, and the number (<code>k</code>) of topics that we are estimating. To speed up estimation, we are here only estimating it on 100 articles.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>lda_output <span class="ot">&lt;-</span> <span class="fu">LDA</span>(AssociatedPress[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,], <span class="at">k =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>We can then inspect the contents of each topic as follows.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="fu">terms</span>(lda_output, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##       Topic 1      Topic 2   Topic 3      Topic 4   Topic 5   Topic 6     
+##  [1,] &quot;new&quot;        &quot;bank&quot;    &quot;people&quot;     &quot;year&quot;    &quot;percent&quot; &quot;bush&quot;      
+##  [2,] &quot;scientists&quot; &quot;new&quot;     &quot;central&quot;    &quot;i&quot;       &quot;year&quot;    &quot;i&quot;         
+##  [3,] &quot;agents&quot;     &quot;rating&quot;  &quot;degrees&quot;    &quot;last&quot;    &quot;oil&quot;     &quot;dukakis&quot;   
+##  [4,] &quot;magellan&quot;   &quot;warming&quot; &quot;government&quot; &quot;waste&quot;   &quot;prices&quot;  &quot;new&quot;       
+##  [5,] &quot;spacecraft&quot; &quot;global&quot;  &quot;high&quot;       &quot;three&quot;   &quot;rate&quot;    &quot;campaign&quot;  
+##  [6,] &quot;work&quot;       &quot;state&quot;   &quot;snow&quot;       &quot;season&quot;  &quot;million&quot; &quot;noriega&quot;   
+##  [7,] &quot;florio&quot;     &quot;summit&quot;  &quot;city&quot;       &quot;soviet&quot;  &quot;company&quot; &quot;california&quot;
+##  [8,] &quot;contact&quot;    &quot;england&quot; &quot;new&quot;        &quot;study&quot;   &quot;rose&quot;    &quot;president&quot; 
+##  [9,] &quot;hispanic&quot;   &quot;films&quot;   &quot;southern&quot;   &quot;tuesday&quot; &quot;new&quot;     &quot;told&quot;      
+## [10,] &quot;nikolais&quot;   &quot;plan&quot;    &quot;state&quot;      &quot;new&quot;     &quot;last&quot;    &quot;jackson&quot;   
+##       Topic 7     Topic 8          Topic 9     Topic 10  
+##  [1,] &quot;soviet&quot;    &quot;administration&quot; &quot;soviet&quot;    &quot;fire&quot;    
+##  [2,] &quot;people&quot;    &quot;government&quot;     &quot;union&quot;     &quot;national&quot;
+##  [3,] &quot;years&quot;     &quot;farmer&quot;         &quot;barry&quot;     &quot;roberts&quot; 
+##  [4,] &quot;city&quot;      &quot;grain&quot;          &quot;greyhound&quot; &quot;two&quot;     
+##  [5,] &quot;officials&quot; &quot;thats&quot;          &quot;president&quot; &quot;police&quot;  
+##  [6,] &quot;police&quot;    &quot;percent&quot;        &quot;gorbachev&quot; &quot;years&quot;   
+##  [7,] &quot;new&quot;       &quot;i&quot;              &quot;moore&quot;     &quot;people&quot;  
+##  [8,] &quot;ago&quot;       &quot;north&quot;          &quot;polish&quot;    &quot;year&quot;    
+##  [9,] &quot;baker&quot;     &quot;farmers&quot;        &quot;officers&quot;  &quot;three&quot;   
+## [10,] &quot;get&quot;       &quot;cuban&quot;          &quot;senate&quot;    &quot;school&quot;</code></pre>
+<p>We can then use the <code>tidy()</code> function from <code>tidytext</code> to gather the relevant parameters we’ve estimated. To get the <span class="math inline">\(\beta\)</span> per-topic-per-word probabilities (i.e., the probability that the given term belongs to a given topic) we can do the following.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>lda_beta <span class="ot">&lt;-</span> <span class="fu">tidy</span>(lda_output, <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" tabindex="-1"></a>lda_beta <span class="sc">%&gt;%</span></span>
+<span id="cb60-4"><a href="#cb60-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>beta)</span></code></pre></div>
+<pre><code>## # A tibble: 104,730 × 3
+##    topic term      beta
+##    &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;
+##  1     5 percent 0.0329
+##  2     2 bank    0.0230
+##  3     6 bush    0.0166
+##  4     6 i       0.0152
+##  5     9 soviet  0.0137
+##  6     9 union   0.0132
+##  7     2 new     0.0132
+##  8     2 rating  0.0132
+##  9     6 dukakis 0.0129
+## 10     4 year    0.0111
+## # ℹ 104,720 more rows</code></pre>
+<p>And to get the <span class="math inline">\(\gamma\)</span> per-document-per-topic probabilities (i.e., the probability that a given document (here: article) belongs to a particular topic) we do the following.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a>lda_gamma <span class="ot">&lt;-</span> <span class="fu">tidy</span>(lda_output, <span class="at">matrix =</span> <span class="st">&quot;gamma&quot;</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="#cb62-3" tabindex="-1"></a>lda_gamma <span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a href="#cb62-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>gamma)</span></code></pre></div>
+<pre><code>## # A tibble: 1,000 × 3
+##    document topic gamma
+##       &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+##  1       76     8 1.000
+##  2       81     3 1.000
+##  3        6     6 1.000
+##  4       43    10 1.000
+##  5       31     5 1.000
+##  6       95     6 1.000
+##  7       77     6 1.000
+##  8       29     9 1.000
+##  9       80     3 1.000
+## 10       57     3 1.000
+## # ℹ 990 more rows</code></pre>
+<p>And we can easily plot our <span class="math inline">\(\beta\)</span> estimates as follows.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a>lda_beta <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="#cb64-3" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">10</span>, beta) <span class="sc">%&gt;%</span></span>
+<span id="cb64-4"><a href="#cb64-4" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb64-5"><a href="#cb64-5" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta) <span class="sc">%&gt;%</span></span>
+<span id="cb64-6"><a href="#cb64-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder_within</span>(term, beta, topic)) <span class="sc">%&gt;%</span></span>
+<span id="cb64-7"><a href="#cb64-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(beta, term, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb64-8"><a href="#cb64-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb64-9"><a href="#cb64-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb64-10"><a href="#cb64-10" tabindex="-1"></a>  <span class="fu">scale_y_reordered</span>() <span class="sc">+</span></span>
+<span id="cb64-11"><a href="#cb64-11" tabindex="-1"></a>  <span class="fu">theme_tufte</span>(<span class="at">base_family =</span> <span class="st">&quot;Helvetica&quot;</span>)</span></code></pre></div>
+<p><img src="06-week6demo_files/figure-html/unnamed-chunk-64-1.png" alt="" width="672" /></p>
+<p>Which shows us the words associated with each topic, and the size of the associated <span class="math inline">\(\beta\)</span> coefficient.</p>
+</div>
+<div id="word-embedding-analysis-1" class="section level2" number="10">
+<h2><span class="header-section-number">10</span> 1.Word Embedding Analysis</h2>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a><span class="fu">library</span>(widyr)</span>
+<span id="cb65-3"><a href="#cb65-3" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb65-4"><a href="#cb65-4" tabindex="-1"></a><span class="fu">library</span>(RSpectra)</span>
+<span id="cb65-5"><a href="#cb65-5" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="#cb65-6" tabindex="-1"></a><span class="co"># create skipgrams</span></span>
+<span id="cb65-7"><a href="#cb65-7" tabindex="-1"></a>tidy_skipgrams <span class="ot">&lt;-</span> emails <span class="sc">%&gt;%</span></span>
+<span id="cb65-8"><a href="#cb65-8" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(ngram, value, <span class="at">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-9"><a href="#cb65-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ngramID =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb65-10"><a href="#cb65-10" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(skipgramID, ngramID) <span class="sc">%&gt;%</span></span>
+<span id="cb65-11"><a href="#cb65-11" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, ngram)</span>
+<span id="cb65-12"><a href="#cb65-12" tabindex="-1"></a></span>
+<span id="cb65-13"><a href="#cb65-13" tabindex="-1"></a><span class="co"># co-occurrence</span></span>
+<span id="cb65-14"><a href="#cb65-14" tabindex="-1"></a>skipgram_probs <span class="ot">&lt;-</span> tidy_skipgrams <span class="sc">%&gt;%</span></span>
+<span id="cb65-15"><a href="#cb65-15" tabindex="-1"></a>  <span class="fu">pairwise_count</span>(word, skipgramID, <span class="at">diag =</span> <span class="cn">TRUE</span>, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-16"><a href="#cb65-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb65-17"><a href="#cb65-17" tabindex="-1"></a></span>
+<span id="cb65-18"><a href="#cb65-18" tabindex="-1"></a><span class="co"># unigram</span></span>
+<span id="cb65-19"><a href="#cb65-19" tabindex="-1"></a>unigram_probs <span class="ot">&lt;-</span> emails <span class="sc">%&gt;%</span></span>
+<span id="cb65-20"><a href="#cb65-20" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, value) <span class="sc">%&gt;%</span></span>
+<span id="cb65-21"><a href="#cb65-21" tabindex="-1"></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span></span>
+<span id="cb65-22"><a href="#cb65-22" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb65-23"><a href="#cb65-23" tabindex="-1"></a></span>
+<span id="cb65-24"><a href="#cb65-24" tabindex="-1"></a><span class="co"># PMI</span></span>
+<span id="cb65-25"><a href="#cb65-25" tabindex="-1"></a>normalized_prob <span class="ot">&lt;-</span> skipgram_probs <span class="sc">%&gt;%</span></span>
+<span id="cb65-26"><a href="#cb65-26" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-27"><a href="#cb65-27" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">word1 =</span> item1, <span class="at">word2 =</span> item2) <span class="sc">%&gt;%</span></span>
+<span id="cb65-28"><a href="#cb65-28" tabindex="-1"></a>  <span class="fu">left_join</span>(unigram_probs <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">word1 =</span> word, <span class="at">p1 =</span> p), <span class="at">by =</span> <span class="st">&quot;word1&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-29"><a href="#cb65-29" tabindex="-1"></a>  <span class="fu">left_join</span>(unigram_probs <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="at">word2 =</span> word, <span class="at">p2 =</span> p), <span class="at">by =</span> <span class="st">&quot;word2&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-30"><a href="#cb65-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_together =</span> p <span class="sc">/</span> p1 <span class="sc">/</span> p2)</span>
+<span id="cb65-31"><a href="#cb65-31" tabindex="-1"></a></span>
+<span id="cb65-32"><a href="#cb65-32" tabindex="-1"></a><span class="co"># matrix</span></span>
+<span id="cb65-33"><a href="#cb65-33" tabindex="-1"></a>pmi_matrix <span class="ot">&lt;-</span> normalized_prob <span class="sc">%&gt;%</span></span>
+<span id="cb65-34"><a href="#cb65-34" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pmi =</span> <span class="fu">log10</span>(p_together)) <span class="sc">%&gt;%</span></span>
+<span id="cb65-35"><a href="#cb65-35" tabindex="-1"></a>  <span class="fu">cast_sparse</span>(word1, word2, pmi)</span>
+<span id="cb65-36"><a href="#cb65-36" tabindex="-1"></a></span>
+<span id="cb65-37"><a href="#cb65-37" tabindex="-1"></a>pmi_matrix<span class="sc">@</span>x[<span class="fu">is.na</span>(pmi_matrix<span class="sc">@</span>x)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb65-38"><a href="#cb65-38" tabindex="-1"></a></span>
+<span id="cb65-39"><a href="#cb65-39" tabindex="-1"></a><span class="co"># SVD</span></span>
+<span id="cb65-40"><a href="#cb65-40" tabindex="-1"></a>pmi_svd <span class="ot">&lt;-</span> <span class="fu">svds</span>(pmi_matrix, <span class="dv">50</span>)</span>
+<span id="cb65-41"><a href="#cb65-41" tabindex="-1"></a></span>
+<span id="cb65-42"><a href="#cb65-42" tabindex="-1"></a>word_vectors <span class="ot">&lt;-</span> pmi_svd<span class="sc">$</span>u</span>
+<span id="cb65-43"><a href="#cb65-43" tabindex="-1"></a><span class="fu">rownames</span>(word_vectors) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(pmi_matrix)</span></code></pre></div>
+<p>At this stage, I apply Singular Value Decomposition (SVD) to the PMI matrix in order to generate word embeddings. The PMI matrix captures how strongly words co-occur relative to chance, and SVD reduces this high-dimensional matrix into a lower-dimensional space.
+The resulting object, <code>word_vectors</code>, represents each word as a numeric vector. Words that appear in similar contexts will have similar vector representations. This allows us to measure semantic similarity between words using vector operations, such as the dot product.
+In this model, each word is represented as a 50-dimensional vector. This dimensionality is a design choice that balances capturing semantic variation while keeping the model computationally efficient.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a><span class="fu">dim</span>(word_vectors)</span></code></pre></div>
+<pre><code>## [1] 844  50</code></pre>
+<p>The resulting word embedding matrix contains 844 unique words, each represented as a 50-dimensional vector. This means that every word in the corpus is mapped onto a point in a 50-dimensional semantic space. Words that appear in similar contexts are expected to have similar vector representations, allowing us to measure semantic similarity between words.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a>nearest_words <span class="ot">&lt;-</span> <span class="cf">function</span>(word_vectors, word){</span>
+<span id="cb68-2"><a href="#cb68-2" tabindex="-1"></a>  selected_vector <span class="ot">=</span> word_vectors[word,]</span>
+<span id="cb68-3"><a href="#cb68-3" tabindex="-1"></a>  mult <span class="ot">=</span> <span class="fu">as.data.frame</span>(word_vectors <span class="sc">%*%</span> selected_vector)</span>
+<span id="cb68-4"><a href="#cb68-4" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="#cb68-5" tabindex="-1"></a>  mult <span class="sc">%&gt;%</span></span>
+<span id="cb68-6"><a href="#cb68-6" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb68-7"><a href="#cb68-7" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">word =</span> rowname,</span>
+<span id="cb68-8"><a href="#cb68-8" tabindex="-1"></a>           <span class="at">similarity =</span> V1) <span class="sc">%&gt;%</span></span>
+<span id="cb68-9"><a href="#cb68-9" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="sc">-</span>similarity)</span>
+<span id="cb68-10"><a href="#cb68-10" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;government&quot;</span>)</span></code></pre></div>
+<pre><code>##                word    similarity
+## 1             under  1.207071e-15
+## 2         reshaping  1.172739e-15
+## 3              help  1.148870e-15
+## 4           college  9.927938e-16
+## 5                us  9.398899e-16
+## 6             union  9.305719e-16
+## 7                uk  8.436703e-16
+## 8              will  8.270776e-16
+## 9            things  7.350797e-16
+## 10          aspects  7.085315e-16
+## 11              how  7.059413e-16
+## 12            place  6.558974e-16
+## 13            those  6.242790e-16
+## 14             term  5.795893e-16
+## 15      initiatives  5.785860e-16
+## 16           taking  5.196455e-16
+## 17             seek  4.928516e-16
+## 18               25  4.661016e-16
+## 19       university  4.472647e-16
+## 20          require  4.353160e-16
+## 21               is  4.247519e-16
+## 22             2024  4.208010e-16
+## 23          explore  4.133820e-16
+## 24            speak  3.984434e-16
+## 25            focus  3.970627e-16
+## 26       commitment  3.399652e-16
+## 27       generating  3.378551e-16
+## 28         optional  3.378551e-16
+## 29         directly  3.281331e-16
+## 30             best  3.223295e-16
+## 31               at  3.012880e-16
+## 32               do  2.974694e-16
+## 33             work  2.901906e-16
+## 34        processes  2.725395e-16
+## 35        strategic  2.709352e-16
+## 36           wishes  2.657289e-16
+## 37        executive  2.643779e-16
+## 38           report  2.580910e-16
+## 39           submit  2.460920e-16
+## 40         question  2.460920e-16
+## 41             what  2.459928e-16
+## 42          provide  2.427008e-16
+## 43            where  2.363960e-16
+## 44            these  2.262135e-16
+## 45            there  2.253721e-16
+## 46         accounts  2.186245e-16
+## 47       supporting  2.185506e-16
+## 48         meetings  2.172472e-16
+## 49          further  2.169684e-16
+## 50          forward  1.937959e-16
+## 51               so  1.867208e-16
+## 52              you  1.857676e-16
+## 53             plan  1.821262e-16
+## 54           within  1.799877e-16
+## 55             look  1.799498e-16
+## 56              all  1.756246e-16
+## 57              for  1.718729e-16
+## 58           period  1.694188e-16
+## 59           future  1.680079e-16
+## 60             they  1.623502e-16
+## 61          reshape  1.563471e-16
+## 62        community  1.547697e-16
+## 63             this  1.523440e-16
+## 64           cannot  1.463346e-16
+## 65         sessions  1.457817e-16
+## 66               to  1.414561e-16
+## 67      uncertainty  1.412666e-16
+## 68           grades  1.412193e-16
+## 69        recognise  1.310718e-16
+## 70              can  1.270863e-16
+## 71    opportunities  1.251235e-16
+## 72            thank  1.239791e-16
+## 73              our  1.208189e-16
+## 74          example  1.094658e-16
+## 75            roles  1.054977e-16
+## 76        available  1.021419e-16
+## 77            staff  1.002285e-16
+## 78          leaders  9.835061e-17
+## 79          arising  9.696535e-17
+## 80          impacts  9.696535e-17
+## 81      sustainable  9.239754e-17
+## 82            again  9.153309e-17
+## 83             into  8.627514e-17
+## 84      expenditure  8.539081e-17
+## 85          reasons  8.234276e-17
+## 86        regrading  8.217769e-17
+## 87        operating  8.113691e-17
+## 88              see  7.934542e-17
+## 89            means  7.559351e-17
+## 90            might  7.474092e-17
+## 91               in  7.345135e-17
+## 92           higher  7.101737e-17
+## 93             2026  6.979046e-17
+## 94             take  6.907421e-17
+## 95      recruitment  6.637715e-17
+## 96          welcome  6.343554e-17
+## 97               62  6.343554e-17
+## 98          patents  6.343554e-17
+## 99         possible  6.177673e-17
+## 100        learning  6.120616e-17
+## 101          intake  6.120616e-17
+## 102             new  6.084281e-17
+## 103          rising  5.920755e-17
+## 104          moving  5.920755e-17
+## 105      assessment  5.815313e-17
+## 106        academic  5.241177e-17
+## 107         student  5.081181e-17
+## 108       education  5.074340e-17
+## 109            were  4.830806e-17
+## 110          matter  4.830806e-17
+## 111         develop  4.830806e-17
+## 112            high  4.830806e-17
+## 113            back  4.830806e-17
+## 114          enough  4.830806e-17
+## 115        minimise  4.830806e-17
+## 116        critical  4.830806e-17
+## 117           allow  4.830806e-17
+## 118      considered  4.830806e-17
+## 119         respond  4.830806e-17
+## 120   contributions  4.830806e-17
+## 121            feel  4.830806e-17
+## 122          damage  4.830806e-17
+## 123        together  4.830806e-17
+## 124         recruit  4.830806e-17
+## 125         aligned  4.830806e-17
+## 126            many  4.609382e-17
+## 127            meet  4.490447e-17
+## 128    postgraduate  4.386160e-17
+## 129             way  4.248015e-17
+## 130          awards  4.248015e-17
+## 131          112.6m  4.248015e-17
+## 132           agile  4.248015e-17
+## 133         secured  4.248015e-17
+## 134         process  3.971968e-17
+## 135        includes  3.886990e-17
+## 136              go  3.791503e-17
+## 137      workstream  3.655844e-17
+## 138      promotions  3.553925e-17
+## 139     innovations  3.454151e-17
+## 140        involved  3.299104e-17
+## 141        response  3.299104e-17
+## 142        december  3.299104e-17
+## 143          thanks  3.147248e-17
+## 144      innovation  3.082203e-17
+## 145        activity  3.082203e-17
+## 146        progress  2.901056e-17
+## 147            only  2.719464e-17
+## 148           costs  2.664821e-17
+## 149        strength  2.535768e-17
+## 150       continued  2.526918e-17
+## 151          launch  2.468112e-17
+## 152             its  2.468112e-17
+## 153           areas  2.089075e-17
+## 154          making  2.066827e-17
+## 155         quality  1.845498e-17
+## 156          stable  1.845498e-17
+## 157            came  1.845498e-17
+## 158     financially  1.845498e-17
+## 159         deliver  1.687446e-17
+## 160       edinburgh  1.378715e-17
+## 161             are  1.367220e-17
+## 162        semester  1.118138e-17
+## 163           local  9.511295e-18
+## 164            year  8.623812e-18
+## 165        reducing  7.624559e-18
+## 166             aim  7.612815e-18
+## 167       agreement  7.102782e-18
+## 168       currently  7.070681e-18
+## 169       addressed  6.755112e-18
+## 170         updates  6.555648e-18
+## 171           while  4.698403e-18
+## 172             300  1.582498e-18
+## 173        building  1.542403e-18
+## 174    chancellor’s  1.533123e-18
+## 175         nucleus  1.408529e-18
+## 176       colleague  7.311325e-29
+## 177          budget  5.423600e-29
+## 178            much  4.959658e-29
+## 179        measures  4.678473e-29
+## 180           break  3.995638e-29
+## 181            ucue  3.895027e-29
+## 182         mission  3.821458e-29
+## 183           needs  3.714237e-29
+## 184      government  3.190592e-29
+## 185         project  2.208572e-29
+## 186         greater  1.320484e-29
+## 187           still  1.005439e-29
+## 188          review  7.815469e-30
+## 189             job  6.437128e-30
+## 190          policy  4.210079e-30
+## 191    negotiations  3.559604e-30
+## 192          larger  3.548037e-30
+## 193      addressing  3.521922e-30
+## 194            mean  3.456042e-30
+## 195              50  3.423820e-30
+## 196      commercial  3.420770e-30
+## 197           power  3.400737e-30
+## 198           grade  3.370979e-30
+## 199          whilst  3.369229e-30
+## 200       extensive  3.361140e-30
+## 201    contributing  3.358462e-30
+## 202        rankings  3.356935e-30
+## 203             4th  3.340962e-30
+## 204            easy  3.333833e-30
+## 205          paused  3.330553e-30
+## 206           prior  3.322165e-30
+## 207          safety  3.286415e-30
+## 208          needed  3.283972e-30
+## 209    successfully  3.261732e-30
+## 210    applications  3.243896e-30
+## 211    demonstrated  3.221315e-30
+## 212      renovation  3.213521e-30
+## 213         focused  3.203170e-30
+## 214         russell  3.186451e-30
+## 215          secure  3.172430e-30
+## 216        overseas  3.167309e-30
+## 217       portfolio  3.155307e-30
+## 218          placed  3.141695e-30
+## 219      particular  3.127148e-30
+## 220      structural  3.125086e-30
+## 221            faqs  3.115370e-30
+## 222       attracted  3.107347e-30
+## 223            very  3.081113e-30
+## 224      unwavering  3.077094e-30
+## 225       buildings  3.064005e-30
+## 226         advance  3.030888e-30
+## 227            them  3.029753e-30
+## 228            ue08  3.013478e-30
+## 229     substantial  3.003396e-30
+## 230       rewarding  2.992703e-30
+## 231        problems  2.988726e-30
+## 232       dedicated  2.949840e-30
+## 233            book  2.940333e-30
+## 234            date  2.892484e-30
+## 235 internationally  2.892351e-30
+## 236         surveys  2.883810e-30
+## 237       affecting  2.865405e-30
+## 238            size  2.839936e-30
+## 239          before  2.830230e-30
+## 240           bring  2.829330e-30
+## 241            face  2.816357e-30
+## 242        tackling  2.810884e-30
+## 243        training  2.794274e-30
+## 244        followed  2.775218e-30
+## 245       diversity  2.769614e-30
+## 246           wider  2.762064e-30
+## 247      especially  2.747275e-30
+## 248             pre  2.715077e-30
+## 249           until  2.705187e-30
+## 250            true  2.702164e-30
+## 251            next  2.697956e-30
+## 252         serious  2.694946e-30
+## 253         answers  2.687370e-30
+## 254            wish  2.684439e-30
+## 255         efforts  2.623597e-30
+## 256            113m  2.575069e-30
+## 257           query  2.556660e-30
+## 258        staffing  2.555468e-30
+## 259         history  2.518878e-30
+## 260         intakes  2.514187e-30
+## 261           joint  2.504512e-30
+## 262          iconic  2.500578e-30
+## 263              am  2.481920e-30
+## 264            fire  2.469179e-30
+## 265       elizabeth  2.443642e-30
+## 266        offering  2.440163e-30
+## 267          taught  2.439543e-30
+## 268         acutely  2.439141e-30
+## 269          honour  2.436325e-30
+## 270          expect  2.430376e-30
+## 271            hire  2.427284e-30
+## 272           drops  2.420642e-30
+## 273         related  2.413107e-30
+## 274     prioritised  2.394384e-30
+## 275              64  2.387529e-30
+## 276        thriving  2.358921e-30
+## 277         someone  2.358354e-30
+## 278       essential  2.356578e-30
+## 279       cancelled  2.324266e-30
+## 280      absolutely  2.246571e-30
+## 281              27  2.235130e-30
+## 282       institute  2.226375e-30
+## 283          thrive  2.208850e-30
+## 284           force  2.146426e-30
+## 285         raising  2.133072e-30
+## 286            keep  2.117617e-30
+## 287         sincere  2.111086e-30
+## 288         towards  2.081496e-30
+## 289     considering  2.032505e-30
+## 290      resilience  2.002426e-30
+## 291        approach  2.000710e-30
+## 292     advertising  1.996606e-30
+## 293       generated  1.996135e-30
+## 294        maximise  1.973196e-30
+## 295            bulk  1.933498e-30
+## 296        external  1.931553e-30
+## 297            sets  1.920200e-30
+## 298            long  1.917129e-30
+## 299         careful  1.914068e-30
+## 300        internal  1.907236e-30
+## 301         knowing  1.900040e-30
+## 302            lead  1.861578e-30
+## 303         procure  1.836537e-30
+## 304     intervening  1.830933e-30
+## 305      regardless  1.827241e-30
+## 306       permanent  1.790693e-30
+## 307   affordability  1.782744e-30
+## 308       completed  1.779988e-30
+## 309          entire  1.757316e-30
+## 310   consideration  1.727268e-30
+## 311      optimistic  1.706121e-30
+## 312         website  1.694594e-30
+## 313     procurement  1.694242e-30
+## 314       suppliers  1.674663e-30
+## 315    underpinning  1.624817e-30
+## 316         operate  1.612118e-30
+## 317         prevent  1.601947e-30
+## 318            held  1.595906e-30
+## 319          vision  1.584468e-30
+## 320         success  1.577379e-30
+## 321           trade  1.533989e-30
+## 322         options  1.505522e-30
+## 323        platform  1.487268e-30
+## 324        scotland  1.454804e-30
+## 325       finalised  1.374882e-30
+## 326       component  1.361829e-30
+## 327     edinburgh’s  1.349778e-30
+## 328            it’s  1.285359e-30
+## 329          annual  1.237995e-30
+## 330            rest  1.224635e-30
+## 331         prepare  1.222758e-30
+## 332        afforded  1.222562e-30
+## 333      shortfalls  1.213235e-30
+## 334           steps  1.209541e-30
+## 335         futures  1.161176e-30
+## 336         funding  1.157651e-30
+## 337   engineering’s  1.120546e-30
+## 338        scottish  1.114204e-30
+## 339       supported  1.104570e-30
+## 340         product  1.093954e-30
+## 341          extend  1.065518e-30
+## 342     responsible  1.026035e-30
+## 343      bioquarter  1.008952e-30
+## 344        consider  1.006261e-30
+## 345         running  9.890393e-31
+## 346             fee  9.489983e-31
+## 347            give  9.420311e-31
+## 348        supports  9.216289e-31
+## 349         festive  9.133725e-31
+## 350     discussions  8.779965e-31
+## 351      protecting  8.774884e-31
+## 352      tremendous  8.712725e-31
+## 353             172  8.594744e-31
+## 354         overall  8.571121e-31
+## 355           asked  8.407888e-31
+## 356      identified  8.401930e-31
+## 357       fantastic  8.388417e-31
+## 358          modest  7.950283e-31
+## 359          groups  7.946853e-31
+## 360        delaying  7.048172e-31
+## 361          repair  6.923932e-31
+## 362          result  6.623649e-31
+## 363          second  6.287866e-31
+## 364        affected  6.201678e-31
+## 365         interim  5.984544e-31
+## 366         keeping  5.968574e-31
+## 367         various  5.733678e-31
+## 368        provides  5.622770e-31
+## 369          people  5.449815e-31
+## 370           board  5.439988e-31
+## 371       reinstate  5.426076e-31
+## 372       emphasise  5.365476e-31
+## 373           since  4.987304e-31
+## 374        actively  4.973740e-31
+## 375            fair  4.879560e-31
+## 376             i’d  4.582932e-31
+## 377        navigate  4.557872e-31
+## 378          direct  4.209272e-31
+## 379       reopening  4.208716e-31
+## 380            core  4.186652e-31
+## 381         enjoyed  4.101703e-31
+## 382          ranked  3.976744e-31
+## 383          winter  3.874641e-31
+## 384      engagement  3.835952e-31
+## 385        equality  3.451464e-31
+## 386      confirming  3.220875e-31
+## 387        achieved  3.070214e-31
+## 388       recurrent  2.886296e-31
+## 389           found  2.312077e-31
+## 390        medicine  2.289652e-31
+## 391         holding  2.286692e-31
+## 392            like  2.185566e-31
+## 393      parameters  1.979477e-31
+## 394          seeing  1.603301e-31
+## 395         control  1.448280e-31
+## 396        estimate  1.134263e-31
+## 397          affect  1.053915e-31
+## 398         include  9.700867e-32
+## 399         several  9.535457e-32
+## 400            loss  9.426413e-32
+## 401        wherever  7.421197e-32
+## 402            room  6.575709e-32
+## 403        detailed  6.205820e-32
+## 404         tuition  5.850199e-32
+## 405      equivalent  4.125137e-32
+## 406         despite  3.853016e-32
+## 407      timeliness  3.494855e-32
+## 408       resilient  2.451335e-32
+## 409        approval  3.202121e-34
+## 410           loved -1.629726e-32
+## 411            2022 -4.276497e-32
+## 412         staying -4.891257e-32
+## 413  manufacturer’s -6.921805e-32
+## 414             had -9.419083e-32
+## 415    environments -1.211943e-31
+## 416           aware -1.268896e-31
+## 417     significant -1.346407e-31
+## 418     exceptional -1.373872e-31
+## 419       challenge -1.382398e-31
+## 420          55,000 -1.386122e-31
+## 421    constructive -1.433556e-31
+## 422            body -1.502378e-31
+## 423   accessibility -1.581477e-31
+## 424             let -1.592136e-31
+## 425              qs -1.704784e-31
+## 426       delivered -1.842075e-31
+## 427             i’m -1.886505e-31
+## 428          august -1.966173e-31
+## 429        comments -1.966645e-31
+## 430        targeted -2.187103e-31
+## 431       delighted -2.252370e-31
+## 432       certainly -2.450138e-31
+## 433        outlined -2.598251e-31
+## 434     environment -2.618063e-31
+## 435            each -2.831555e-31
+## 436             win -2.980118e-31
+## 437         monitor -3.363932e-31
+## 438            show -3.491879e-31
+## 439          recent -3.715039e-31
+## 440       situation -3.787808e-31
+## 441           built -4.405019e-31
+## 442           minor -4.485408e-31
+## 443          emails -4.488139e-31
+## 444          credit -5.133515e-31
+## 445       workforce -5.184211e-31
+## 446           queen -5.220406e-31
+## 447           group -5.245751e-31
+## 448            once -5.503451e-31
+## 449          campus -5.722562e-31
+## 450        licenses -6.165908e-31
+## 451         service -6.231829e-31
+## 452    capitalising -6.371511e-31
+## 453       extending -6.433826e-31
+## 454    particularly -6.563609e-31
+## 455          become -6.701108e-31
+## 456             efi -6.968776e-31
+## 457          course -6.978972e-31
+## 458       offerings -7.126753e-31
+## 459   organisations -7.286221e-31
+## 460       investing -7.563595e-31
+## 461         because -7.566649e-31
+## 462          prefer -7.603182e-31
+## 463         lightly -7.716052e-31
+## 464       positives -7.939433e-31
+## 465           range -7.959928e-31
+## 466         another -8.177616e-31
+## 467      exceptions -8.355165e-31
+## 468      calculator -8.679117e-31
+## 469          effort -9.440522e-31
+## 470     opportunity -9.691417e-31
+## 471          modern -1.000918e-30
+## 472      definitive -1.075520e-30
+## 473           round -1.084797e-30
+## 474           point -1.085199e-30
+## 475          agreed -1.093951e-30
+## 476          career -1.096221e-30
+## 477         details -1.162685e-30
+## 478           goods -1.180702e-30
+## 479         mindful -1.186704e-30
+## 480        national -1.196630e-30
+## 481          regard -1.204526e-30
+## 482       programme -1.209136e-30
+## 483          driven -1.225733e-30
+## 484      internally -1.232708e-30
+## 485         regular -1.251334e-30
+## 486           safer -1.251690e-30
+## 487       necessary -1.299780e-30
+## 488             two -1.300700e-30
+## 489          invest -1.300968e-30
+## 490             fit -1.342621e-30
+## 491          inform -1.345216e-30
+## 492      healthcare -1.366662e-30
+## 493       detailing -1.370047e-30
+## 494      automation -1.396539e-30
+## 495    institutions -1.411144e-30
+## 496         winning -1.422532e-30
+## 497     performance -1.423559e-30
+## 498           sites -1.430593e-30
+## 499          indeed -1.432437e-30
+## 500       milestone -1.451894e-30
+##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 344 rows ]</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;university&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##          word similarity
+## 1  university 0.26104875
+## 2     college 0.22744129
+## 3       union 0.19191611
+## 4    finances 0.11526758
+## 5   executive 0.09576521
+## 6     reshape 0.08618376
+## 7       visit 0.08285229
+## 8        best 0.07894105
+## 9      across 0.06630575
+## 10        has 0.06488970</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;staff&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##          word similarity
+## 1       staff 0.21088352
+## 2         non 0.18831547
+## 3      reduce 0.17723992
+## 4       costs 0.15770670
+## 5       speak 0.09470253
+## 6   operating 0.08440282
+## 7       other 0.07870018
+## 8  workstream 0.07198272
+## 9        from 0.06735273
+## 10  questions 0.06527681</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;students&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##          word  similarity
+## 1         the 0.027512637
+## 2         our 0.024042429
+## 3  experience 0.016662884
+## 4   improving 0.016376697
+## 5       under 0.011891660
+## 6        plan 0.010260132
+## 7   reshaping 0.010240860
+## 8   community 0.009869635
+## 9       world 0.007389759
+## 10     around 0.007339988</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a><span class="fu">nearest_words</span>(word_vectors, <span class="st">&quot;financial&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##           word similarity
+## 1    financial 0.06478905
+## 2            a 0.05966375
+## 3          the 0.05666165
+## 4     position 0.05333557
+## 5  sustainable 0.03563490
+## 6         year 0.03249273
+## 7         that 0.02970866
+## 8       future 0.02947316
+## 9         this 0.02938830
+## 10    question 0.02930094</code></pre>
+<p>To explore the semantic structure captured by the word embeddings, I examined the nearest neighbours of several key terms in the corpus, including “university”, “staff”, and “government”.
+The results for “university” show a relatively coherent semantic cluster, with closely related words such as “college”, “union”, “finances”, and “executive”. These terms reflect the institutional and administrative context of the emails, suggesting that the model successfully captures meaningful associations between words that frequently co-occur in similar contexts.
+Similarly, the term “staff” is associated with words such as “reduce”, “costs”, “operating”, and “workstream”, which reflect discussions of organisational change and financial pressures within the university. This indicates that the embedding is able to capture policy-related and managerial themes present in the text.
+In contrast, the results for “government” are less coherent, with many associated terms being generic or weakly related. This suggests that the model struggles to capture clear semantic relationships for some words.
+Overall, these differences likely reflect the limited size of the corpus, which consists of only a small number of emails. With fewer co-occurrence patterns available, the model has less information to learn stable word associations, leading to weaker or noisier embeddings for some terms.</p>
+</div>
+<div id="embedding-visualization-umap" class="section level2" number="11">
+<h2><span class="header-section-number">11</span> 2. Embedding Visualization (UMAP)</h2>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a><span class="fu">library</span>(umap)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a><span class="co"># reduce dimensions to 2D</span></span>
+<span id="cb80-2"><a href="#cb80-2" tabindex="-1"></a>umap_result <span class="ot">&lt;-</span> <span class="fu">umap</span>(word_vectors)</span>
+<span id="cb80-3"><a href="#cb80-3" tabindex="-1"></a></span>
+<span id="cb80-4"><a href="#cb80-4" tabindex="-1"></a><span class="co"># convert to dataframe</span></span>
+<span id="cb80-5"><a href="#cb80-5" tabindex="-1"></a>umap_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(umap_result<span class="sc">$</span>layout)</span>
+<span id="cb80-6"><a href="#cb80-6" tabindex="-1"></a></span>
+<span id="cb80-7"><a href="#cb80-7" tabindex="-1"></a><span class="co"># add word labels</span></span>
+<span id="cb80-8"><a href="#cb80-8" tabindex="-1"></a>umap_df<span class="sc">$</span>word <span class="ot">&lt;-</span> <span class="fu">rownames</span>(word_vectors)</span>
+<span id="cb80-9"><a href="#cb80-9" tabindex="-1"></a></span>
+<span id="cb80-10"><a href="#cb80-10" tabindex="-1"></a><span class="fu">colnames</span>(umap_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;UMAP1&quot;</span>, <span class="st">&quot;UMAP2&quot;</span>, <span class="st">&quot;word&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="fu">ggplot</span>(umap_df, <span class="fu">aes</span>(<span class="at">x =</span> UMAP1, <span class="at">y =</span> UMAP2)) <span class="sc">+</span></span>
+<span id="cb81-2"><a href="#cb81-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb81-3"><a href="#cb81-3" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb81-4"><a href="#cb81-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Word Embedding Visualization (UMAP)&quot;</span>)</span></code></pre></div>
+<p><img src="06-week6demo_files/figure-html/unnamed-chunk-71-1.png" alt="" width="672" />
+The UMAP visualization shows the structure of the word embeddings in two-dimensional space. A dense cluster of points can be observed in the centre of the plot, indicating that many words share similar contextual usage and are therefore grouped closely together in the embedding space. These are likely high-frequency words related to the core themes of the emails, such as organisational processes, staff, and institutional management.
+In contrast, many words are distributed along curved patterns at the edges of the plot. These words are likely less frequent or appear in more specific contexts, resulting in weaker or more distinct semantic relationships. As a result, they are positioned further away from the central cluster.
+Additionally, some smaller isolated clusters can be observed, suggesting the presence of more specialised or context-specific vocabulary. Overall, the visualization reflects how the embedding model captures both central themes and peripheral terms within the corpus.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a>subset_words <span class="ot">&lt;-</span> umap_df <span class="sc">%&gt;%</span></span>
+<span id="cb82-2"><a href="#cb82-2" tabindex="-1"></a>  <span class="fu">filter</span>(UMAP1 <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">&amp;</span> UMAP1 <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&amp;</span> UMAP2 <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> UMAP2 <span class="sc">&lt;</span> <span class="dv">6</span>)</span>
+<span id="cb82-3"><a href="#cb82-3" tabindex="-1"></a></span>
+<span id="cb82-4"><a href="#cb82-4" tabindex="-1"></a><span class="fu">ggplot</span>(subset_words, <span class="fu">aes</span>(<span class="at">x =</span> UMAP1, <span class="at">y =</span> UMAP2)) <span class="sc">+</span></span>
+<span id="cb82-5"><a href="#cb82-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb82-6"><a href="#cb82-6" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> word), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb82-7"><a href="#cb82-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb82-8"><a href="#cb82-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Zoomed-in Cluster of Core Words&quot;</span>)</span></code></pre></div>
+<p><img src="06-week6demo_files/figure-html/unnamed-chunk-72-1.png" alt="" width="672" />
+The zoomed-in UMAP visualization reveals that the central embedding space is structured into several meaningful semantic sub-clusters rather than forming a single homogeneous group.
+One cluster, located near the centre of the plot, includes words such as “workstream”, “change”, and “projects”, which relate to organisational processes and institutional restructuring. This reflects the focus of the emails on internal reforms and operational adjustments.
+A second cluster, positioned towards the right-hand side, contains words such as “jobs”, “funding”, and “finances”, indicating a distinct semantic area related to financial pressures and cost reduction. This aligns with the recurring theme of financial sustainability present throughout the corpus.
+A third cluster, located in the upper region of the plot, includes terms such as “sustainability”, “impact”, and “university”, which reflect broader institutional goals and long-term strategic priorities.
+Finally, a more diffuse cluster on the left-hand side contains more generic terms such as “make”, “people”, and “working”, which are less semantically specific and likely reflect general language use.
+Overall, this visualization demonstrates that the word embedding model is able to capture meaningful semantic structure within the text, separating different thematic dimensions such as management processes, financial concerns, and institutional objectives into distinct regions of the embedding space. This also highlights the usefulness of dimensionality reduction techniques such as UMAP in making high-dimensional semantic relationships interpretable.</p>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Week6_demo</strong>" was written by Junke Guan. It was last built on 2026-03-23.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>
